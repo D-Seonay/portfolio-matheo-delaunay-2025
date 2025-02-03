@@ -4,7 +4,7 @@ import { motion } from "framer-motion";
 
 const AboutMe = () => {
   return (
-    <div className="min-h-screen text-white flex flex-col items-center justify-center p-8">
+    <div className="min-h-screen text-white flex flex-col items-center justify-center p-8 relative w-full background-grey">
       <motion.div 
         initial={{ opacity: 0, y: 50 }} 
         animate={{ opacity: 1, y: 0 }} 
@@ -35,6 +35,7 @@ const AboutMe = () => {
         </p>
       </motion.div>
     </div>
+
   );
 };
 

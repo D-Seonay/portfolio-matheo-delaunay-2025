@@ -3,6 +3,8 @@ import HomePage from "./components/Home";
 import ProjectList from "./components/ProjectList";
 import ServicesBanner from "./components/ServicesBanner";
 import AboutMe from "./components/AboutMe";
+import FAQ from "./components/FAQ";
+import Footer from "./components/Footer";
 
 
 export default function Home() {
@@ -12,6 +14,9 @@ export default function Home() {
       <HomePage />
       <ServicesBanner />
       <AboutMe /> 
+      {/* <ProjectList /> */}
+      <FAQ />
+      <Footer />
     </div>
   );
 }

@@ -12,3 +12,16 @@ export interface ApiResponse<T> {
     error?: string;
 }  
 export type Lang = "fr" | "en";
+
+
+export interface FAQ {
+    id: string;
+    question: string;
+    answer: string;
+}
+
+export interface Service {
+    title: string;
+    description: string;
+    icon: string;
+}
