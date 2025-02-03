@@ -2,6 +2,7 @@ import Navbar from "./components/Navbar";
 import HomePage from "./components/Home";
 import ProjectList from "./components/ProjectList";
 import ServicesBanner from "./components/ServicesBanner";
+import AboutMe from "./components/AboutMe";
 
 
 export default function Home() {
@@ -10,7 +11,7 @@ export default function Home() {
       <Navbar />
       <HomePage />
       <ServicesBanner />
-      <ProjectList />
+      <AboutMe /> 
     </div>
   );
 }
