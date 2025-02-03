@@ -12,8 +12,8 @@ export default function Navbar() {
       className="fixed top-0 left-0 w-full py-4 px-6 flex justify-between items-center z-50"
     >
       {/* Logo */}
-      <Link href="/" className="text-white text-2xl font-bold">
-        MyLogo
+      <Link href="/" className="text-primary text-2xl font-bold">
+        Seonay.
       </Link>
 
       {/* Menu */}
