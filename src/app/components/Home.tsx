@@ -2,11 +2,21 @@
 
 import React from 'react'
 import { motion } from 'framer-motion'
+import Image from 'next/image';
 
 
 export default function Home() {
     return (
-    <div className="relative min-h-screen flex flex-col">
+    <div className="relative h-screen w-screen flex flex-col">
+        <Image
+        src="/grid.svg"
+        alt="grid bg"
+        className="absolute inset-0 z-[-10] min-w-full min-h-screen"
+        layout="fill"
+        objectFit="cover"
+        quality={100}
+        
+        />
     {/* Background Shapes */}
     <div className="absolute inset-0 -z-10">
         <div
@@ -20,7 +30,7 @@ export default function Home() {
     ></div>
     </div>
     {/* Main Section */}
-    <main className="flex-grow flex flex-col items-center justify-center text-center text-white px-6">
+    <main className="flex-grow flex flex-col items-center justify-center text-center text-white px-6 z-10">
     <motion.h1
         initial={{ opacity: 0, y: 20 }}
         animate={{ opacity: 1, y: 0 }}
