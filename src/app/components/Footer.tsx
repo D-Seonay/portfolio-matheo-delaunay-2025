@@ -1,6 +1,6 @@
 "use client"
 import React from "react";
-import { FaInstagram, FaLinkedin, FaGithub, FaTwitter } from "react-icons/fa";
+import { FaLinkedin, FaGithub } from "react-icons/fa";
 
 const Footer = () => {
   return (
@@ -33,18 +33,12 @@ const Footer = () => {
         <div className="flex flex-col items-center md:items-start">
           <h2 className="text-lg font-semibold mb-4 text-primary">Follow Us</h2>
           <div className="flex space-x-4 mb-4">
-            {/* <a href="https://www.instagram.com" target="_blank" rel="noopener noreferrer" className="hover:text-pink-500">
-              <FaInstagram size={24} />
-            </a> */}
             <a href="https://www.linkedin.com/in/matheo-delaunay/" target="_blank" rel="noopener noreferrer" className="hover:text-blue-500" title="LinkedIn Profile">
               <FaLinkedin size={24} />
             </a>
             <a href="https://github.com/D-Seonay" target="_blank" rel="noopener noreferrer" className="hover:text-gray-400" title="GitHub Profile">
               <FaGithub size={24} />
             </a>
-            {/* <a href="https://twitter.com" target="_blank" rel="noopener noreferrer" className="hover:text-blue-400">
-              <FaTwitter size={24} />
-            </a> */}
           </div>
           <ul className="space-y-2">
             <li><a href="#" className="hover:text-primary">Legal Notice</a></li>

@@ -34,7 +34,7 @@ export default function Home() {
         transition={{ duration: 1 }}
         className="text-4xl sm:text-6xl font-extrabold"
     >
-        Your Vision, My <span className="text-primary">Expertise</span> — <br /> Let's Build Together
+        Your Vision, My <span className="text-primary">Expertise</span> — <br /> Let&apos;s Build Together
     </motion.h1>
     <motion.p
         initial={{ opacity: 0, y: 20 }}
@@ -42,7 +42,7 @@ export default function Home() {
         transition={{ duration: 1, delay: 0.2 }}
         className="mt-4 text-lg sm:text-xl max-w-2xl"
     >
-        Turn your idea into a thriving digital product. With our hands-on support in strategy, design, and development, we'll craft a platform that ensures your launch is nothing short of remarkable.
+        Turn your idea into a thriving digital product. With our hands-on support in strategy, design, and development, we&apos;ll craft a platform that ensures your launch is nothing short of remarkable.
     </motion.p>
     <motion.div
         initial={{ opacity: 0, y: 20 }}

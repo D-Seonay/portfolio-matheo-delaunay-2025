@@ -15,7 +15,7 @@ export default function Projects() {
   const [hoveredProject, setHoveredProject] = useState<{ name: string; image: string } | null>(null);
   const [cursorPos, setCursorPos] = useState({ x: 0, y: 0 });
 
-  const handleMouseMove = (e: { clientX: any; clientY: any; }) => {
+  const handleMouseMove = (e: React.MouseEvent<HTMLLIElement, MouseEvent>) => {
     setCursorPos({ x: e.clientX, y: e.clientY });
   };
 
