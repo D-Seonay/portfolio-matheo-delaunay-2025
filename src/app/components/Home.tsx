@@ -49,7 +49,7 @@ export default function Home() {
         animate={{ opacity: 1, y: 0 }}
         transition={{ duration: 1, delay: 0.4 }}
     >
-            <AnimatedButton text="Start Today " link="https://www.google.com" />
+            <AnimatedButton text="Start Today " link="#" />
 
     </motion.div>
 
