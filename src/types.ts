@@ -14,7 +14,7 @@ export interface ApiResponse<T> {
 export type Lang = "fr" | "en";
 
 
-export interface FAQ {
+export interface FAQType {
     id: string;
     question: string;
     answer: string;

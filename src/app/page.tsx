@@ -9,7 +9,7 @@ import Footer from "./components/Footer";
 
 export default function Home() {
   return (
-    <div className="min-h-screen flex items-center justify-center flex-col">
+    <div className="min-h-screen min-w-screen flex items-center justify-center flex-col">
       <Navbar />
       <HomePage />
       <ServicesBanner />

@@ -3,6 +3,7 @@
 import React from 'react'
 import { motion } from 'framer-motion'
 import Image from 'next/image';
+import AnimatedButton from './AnimatedButton';
 
 
 export default function Home() {
@@ -26,7 +27,7 @@ export default function Home() {
     </div>
 
     {/* Main Section */}
-    <main className="flex-grow flex flex-col items-center justify-center text-center text-white px-6 z-10">
+    <main className="flex-grow flex flex-col items-center justify-center text-center text-white px-6 z-10 min-w-screen">
     <motion.h1
         initial={{ opacity: 0, y: 20 }}
         animate={{ opacity: 1, y: 0 }}
@@ -43,14 +44,16 @@ export default function Home() {
     >
         Turn your idea into a thriving digital product. With our hands-on support in strategy, design, and development, we'll craft a platform that ensures your launch is nothing short of remarkable.
     </motion.p>
-    <motion.button
+    <motion.div
         initial={{ opacity: 0, y: 20 }}
         animate={{ opacity: 1, y: 0 }}
         transition={{ duration: 1, delay: 0.4 }}
-        className="mt-6 bg-primary text-black px-6 py-3 rounded-lg shadow-lg hover:bg-yellow-300"
     >
-        Start Today ↗
-    </motion.button>
+            <AnimatedButton text="Start Today " link="https://www.google.com" />
+
+    </motion.div>
+
+
     </main>
 </div>
 )

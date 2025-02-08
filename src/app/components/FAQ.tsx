@@ -1,30 +1,22 @@
-"use client"
-import { useState } from "react";
+"use client";
+
+import { useState, useEffect } from "react";
 import { motion } from "framer-motion";
 import { FaChevronDown } from "react-icons/fa6";
+import { FAQType } from "../../types";
 
-
-const faqs = [
-  {
-    question: "What types of services do you offer?",
-    answer: "We offer a wide range of services including marketing, product development, and more."
-  },
-  {
-    question: "Do you offer post-launch support?",
-    answer: "Yes, our team is dedicated to providing continuous support even after launch."
-  },
-  {
-    question: "Can you help with Generative AI for my business?",
-    answer: "Absolutely, we specialize in integrating Generative AI solutions."
-  },
-  {
-    question: "What tools and technologies do you use?",
-    answer: "We use the latest tools such as React, Node.js, and Tailwind CSS."
-  }
-];
 
 export default function FAQ() {
+  const [faqs, setFaqs] = useState<FAQType[]>([]);
   const [activeIndex, setActiveIndex] = useState<number | null>(null);
+
+  useEffect(() => {
+    // Fetch FAQs from API
+    fetch("/api/faq?lang=fr") // Change the lang query parameter to "en" for English FAQs
+      .then((response) => response.json())
+      .then((data) => setFaqs(data.data))
+      .catch((error) => console.error("Error fetching FAQs:", error));
+  }, []);
 
   const toggleFAQ = (index: number) => {
     setActiveIndex(activeIndex === index ? null : index);
@@ -41,7 +33,7 @@ export default function FAQ() {
           {faqs.map((faq, index) => (
             <div
               key={index}
-              className=" rounded-2xl p-6 shadow-lg cursor-pointer"
+              className="bg-gray-800 rounded-2xl p-6 shadow-lg cursor-pointer"
               onClick={() => toggleFAQ(index)}
             >
               <div className="flex justify-between items-center">
