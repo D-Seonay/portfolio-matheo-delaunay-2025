@@ -4,6 +4,7 @@ import ServicesBanner from "./components/ServicesBanner";
 import AboutMe from "./components/AboutMe";
 import FAQ from "./components/FAQ";
 import Footer from "./components/Footer";
+import ScrollToTopButton from "./components/ScrollToTopButton";
 
 
 export default function Home() {
@@ -15,6 +16,7 @@ export default function Home() {
       <AboutMe /> 
       <FAQ />
       <Footer />
+      <ScrollToTopButton />
     </div>
   );
 }
