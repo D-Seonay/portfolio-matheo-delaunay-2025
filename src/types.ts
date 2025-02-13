@@ -10,6 +10,7 @@ export interface Project {
 export interface ApiResponse<T> {
     data: T;
     error?: string;
+    message?: string;
 }  
 export type Lang = "fr" | "en";
 
@@ -24,4 +25,11 @@ export interface Service {
     title: string;
     description: string;
     icon: string;
+}
+
+export interface Status {
+    id: string;
+    status: string;
+    text: string;
+    label: string;
 }

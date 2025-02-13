@@ -4,6 +4,7 @@ import React from 'react'
 import { motion } from 'framer-motion'
 import Image from 'next/image';
 import AnimatedButton from './AnimatedButton';
+import StatusButton from './StatusButton';
 
 
 export default function Home() {
@@ -52,8 +53,7 @@ export default function Home() {
             <AnimatedButton text="Start Today " link="#" />
 
     </motion.div>
-
-
+    <StatusButton />
     </main>
 </div>
 )
