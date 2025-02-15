@@ -51,7 +51,7 @@ export default function Home() {
           transition={{ duration: 1 }}
           className="text-4xl sm:text-6xl font-extrabold"
         >
-          {text.title} <span className="text-primary">{text.titleHighlight}</span> — <br /> Let&apos;s Build Together
+          {text.title} <span className="text-primary">{text.titleHighlight}</span> — <br /> {text.titleSecondaryPart}
         </motion.h1>
         <motion.p
           initial={{ opacity: 0, y: 20 }}

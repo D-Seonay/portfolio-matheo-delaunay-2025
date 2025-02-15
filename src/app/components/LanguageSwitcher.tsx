@@ -9,11 +9,12 @@ const LanguageSwitcher = () => {
   return (
     <button
       onClick={toggleLanguage}
-      className="bg-blue-600 text-white py-2 px-4 rounded-lg shadow-md hover:bg-blue-700 transition duration-300"
+      className="py-2 text-sm text-gray-300 hover:text-gray-100"
     >
-      {language === "fr" ? "🇫🇷 FR" : "🇬🇧 EN"}
+      {language === "fr" ? "Changer en Anglais  🇬🇧" : "Switch to Frensh  🇫🇷"}
     </button>
   );
 };
 
 export default LanguageSwitcher;
+  

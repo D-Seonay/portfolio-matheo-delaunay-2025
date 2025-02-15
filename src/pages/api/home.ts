@@ -6,7 +6,8 @@ const texts: Record<string, HomeTextType> = {
   en: {
     title: "Your Vision, My",
     titleHighlight: "Expertise",
-    titleSecondaryPart: " — Let's Build Together",
+    titleSecondaryPart: "Let's Build Together",
+    
     description:
       "Turn your idea into a thriving digital product. With our hands-on support in strategy, design, and development, we'll craft a platform that ensures your launch is nothing short of remarkable.",
     button: "Start Today",
@@ -14,7 +15,7 @@ const texts: Record<string, HomeTextType> = {
   fr: {
     title: "Votre Vision, Mon",
     titleHighlight: "Expertise",
-    titleSecondaryPart: " — Construisons Ensemble",
+    titleSecondaryPart: "Construisons Ensemble",
     description:
       "Transformez votre idée en un produit numérique florissant. Avec notre soutien en stratégie, design et développement, nous créerons une plateforme qui garantira le succès de votre lancement.",
     button: "Commencez Aujourd'hui",
