@@ -9,7 +9,6 @@ export default function StatusButton() {
     const [text, setText] = useState("");
     const [statusId, setStatusId] = useState("0");
     const [statusLabel, setStatusLabel] = useState("Indéfini");
-    const lang = "fr"; // ou récupérer dynamiquement selon la langue du navigateur
 
     useEffect(() => {
         async function fetchStatus() {
