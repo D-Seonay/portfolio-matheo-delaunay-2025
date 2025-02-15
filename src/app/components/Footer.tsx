@@ -11,14 +11,16 @@ const Footer = () => {
             <div className="absolute top-1 right-1 w-[300px] h-[300px] bg-gradient-to-br from-cyan-400 via-blue-500 to-black opacity-50 rounded-full blur-3xl animate-blob"></div>
             <div className="absolute top-1/2 left-1/2 w-[200px] h-[200px] bg-gradient-to-br from-blue-800 to-black opacity-60 rounded-full blur-2xl animate-blob"></div> 
         </div>
-        <LanguageSwitcher />
 
 
         <div className="container mx-auto grid grid-cols-1 md:grid-cols-3 gap-8">
         {/* Logo and Rights */}
         <div className="flex flex-col items-center md:items-start">
           <h1 className="text-xl font-bold text-primary">Seonay.</h1>
+          <LanguageSwitcher />
+
           <p className="text-sm mt-2">© 2025 MyWebsite. All rights reserved.</p>
+
         </div>
 
         {/* Site Map */}

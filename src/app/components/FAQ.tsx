@@ -27,7 +27,7 @@ export default function FAQ() {
     <div className="text-white min-h-full py-16 px-4 md:px-20 w-full">
       <div className="max-w-4xl mx-auto">
         <h1 className="text-4xl font-bold mb-2 text-center text-primary">
-          {language === "fr" ? "FAQs" : "Frequently Asked Questions"}
+          {language === "fr" ? "FAQs" : "FAQs"}
         </h1>
         <p className="text-center text-gray-400 mb-12">
           {language === "fr"
