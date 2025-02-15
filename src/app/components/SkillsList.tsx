@@ -1,6 +1,5 @@
 "use client";
 import React, { useState, useEffect } from "react";
-import { motion } from "framer-motion";
 import SpotlightCard from "./SpotlightCard";
 
 // Simulation d'un appel API (Remplace ça par ton appel API réel)
@@ -17,7 +16,12 @@ const fetchSkills = async () => {
 };
 
 export default function SkillsList() {
-  const [skills, setSkills] = useState<any[]>([]);
+  interface Skill {
+    title: string;
+    description: string;
+  }
+
+  const [skills, setSkills] = useState<Skill[]>([]);
   const [loading, setLoading] = useState(true);
 
   useEffect(() => {

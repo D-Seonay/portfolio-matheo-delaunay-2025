@@ -39,7 +39,7 @@ export default function SpotlightCard({
                 <motion.div
                     className="absolute inset-0 rounded-lg pointer-events-none"
                     style={{
-                        background: `radial-gradient(circle at ${mousePosition.x + 160}px ${mousePosition.y + 96}px, rgba(255, 255, 255, 0.15), transparent 80%)`,
+                        background: `radial-gradient(circle at ${mousePosition.x + 160}px ${mousePosition.y + 96}px, rgba(255, 255, 255, 0.15), transparent 90%)`,
                     }}
                 />
 
