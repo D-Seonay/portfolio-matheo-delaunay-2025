@@ -1,3 +1,5 @@
+import { text } from "stream/consumers";
+
 export interface Project {
     id: string;
     name: string;
@@ -33,3 +35,11 @@ export interface Status {
     text: string;
     label: string;
 }
+
+export type HomeTextType = {
+    title: string;
+    titleHighlight: string;
+    titleSecondaryPart: string;
+    description: string;
+    button: string;
+  };

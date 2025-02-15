@@ -1,8 +1,10 @@
 "use client";
 import React, { useEffect, useState } from "react";
 import { motion } from "framer-motion";
+import { useLanguage } from "../context/LanguageContext";
 
 export default function StatusButton() {
+      const { language } = useLanguage();
     const [status, setStatus] = useState("Loading...");
     const [text, setText] = useState("");
     const [statusId, setStatusId] = useState("0");
@@ -12,7 +14,7 @@ export default function StatusButton() {
     useEffect(() => {
         async function fetchStatus() {
             try {
-                const res = await fetch(`/api/status?lang=${lang}&id=1`);
+                const res = await fetch(`/api/status?lang=${language}&id=1`);
                 const data = await res.json();
                 if (data.data.length > 0) {
                     setStatus(data.data[0].status);
@@ -28,7 +30,7 @@ export default function StatusButton() {
         fetchStatus();
         const interval = setInterval(fetchStatus, 5000); // Actualisation toutes les 5s
         return () => clearInterval(interval);
-    }, []);
+    }, [language]);
 
     // Définition des couleurs des statuts
     const statusColors: Record<string, { bg: string; ping: string; label: string }> = {
