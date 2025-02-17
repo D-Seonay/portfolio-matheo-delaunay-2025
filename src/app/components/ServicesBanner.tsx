@@ -2,19 +2,21 @@
 
 import { motion } from "framer-motion";
 import { PiStarFourFill } from "react-icons/pi";
-
-const services = [
-  { id: 1, label: "Maquettage UI/UX" },
-  { id: 2, icon: <PiStarFourFill className="h-6 w-6" /> },
-  { id: 3, label: "Développement Front-End" },
-  { id: 4, icon: <PiStarFourFill className="h-6 w-6" /> },
-  { id: 5, label: "Développement Back-End" },
-  { id: 6, icon: <PiStarFourFill className="h-6 w-6" /> },
-  { id: 7, label: "Création de Portfolio" },
-  { id: 8, icon: <PiStarFourFill className="h-6 w-6" /> },
-];
+import { useLanguage } from "../context/LanguageContext";
+import { ServiceType } from "@/types";
+import { useEffect, useState } from "react";
 
 export default function ServicesBanner() {
+  const [services, setServices] = useState<ServiceType[]>([]);
+  const { language } = useLanguage();
+
+  useEffect(() => {
+    fetch(`/api/services?lang=${language}`)
+      .then((response) => response.json())
+      .then((data) => setServices(data.data))
+      .catch((error) => console.error("Erreur lors du chargement des services :", error));
+  }, [language]);
+
   return (
     <div className="w-full overflow-hidden py-4 backdrop-blur-lg shadow-md">
       <motion.div
@@ -32,7 +34,7 @@ export default function ServicesBanner() {
             key={service.id}
             className="text-white text-lg font-semibold px-6 py-2 rounded-xl flex items-center gap-2"
           >
-            {service.label || service.icon}
+            {service.title || <PiStarFourFill className="h-6 w-6" />}
           </span>
         ))}
 
@@ -42,7 +44,7 @@ export default function ServicesBanner() {
             key={`repeat-${service.id}`}
             className="text-white text-lg font-semibold px-6 py-2 rounded-xl flex items-center gap-2"
           >
-            {service.label || service.icon}
+            {service.title || <PiStarFourFill className="h-6 w-6" />}
           </span>
         ))}
       </motion.div>

@@ -22,12 +22,6 @@ export interface FAQType {
     answer: string;
 }
 
-export interface Service {
-    title: string;
-    description: string;
-    icon: string;
-}
-
 export interface Status {
     id: string;
     status: string;
@@ -41,4 +35,10 @@ export type HomeTextType = {
     titleSecondaryPart: string;
     description: string;
     button: string;
-  };
+};
+
+
+export type ServiceType = {
+    id: string;
+    title: string;
+};
