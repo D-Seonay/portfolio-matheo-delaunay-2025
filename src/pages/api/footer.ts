@@ -7,6 +7,7 @@ const footerData: Record<Lang, FooterDataType> = {
         socials: [
             { id: "1", name: "LinkedIn", icon: "FaLinkedin", link: "https://www.linkedin.com/in/matheo-delaunay/" },
             { id: "2", name: "Github", icon: "FaGithub", link: "https://github.com/D-Seonay" },
+            {id: "3", name: "Email", icon: "FaEnvelope", link: "mailto:matheodelaunay04@gmail.com"},
         ],
         rights: "©2025 SEONAY. TOUS DROITS RÉSERVÉS.",
         credits: "Conçu & Développé avec ❤️ par Mathéo Delaunay",
@@ -17,6 +18,7 @@ const footerData: Record<Lang, FooterDataType> = {
         socials: [
             { id: "1", name: "LinkedIn", icon: "FaLinkedin", link: "https://www.linkedin.com/in/matheo-delaunay/" },
             { id: "2", name: "Github", icon: "FaGithub", link: "https://github.com/D-Seonay" },
+            { id: "3", name: "Email", icon: "FaEnvelope", link: "mailto:matheodelaunay04@gmail.com"},
         ],
         rights: "©2025 SEONAY. ALL RIGHTS RESERVED.",
         credits: "Designed & Developed with ❤️ by Mathéo Delaunay",

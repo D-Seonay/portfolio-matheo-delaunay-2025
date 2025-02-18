@@ -1,7 +1,7 @@
 "use client";
 
 import React, { useEffect, useState } from "react";
-import { FaLinkedin, FaGithub } from "react-icons/fa";
+import { FaLinkedin, FaGithub, FaEnvelope } from "react-icons/fa";
 import LanguageSwitcher from "./LanguageSwitcher";
 import Link from "next/link";
 import { FooterDataType } from "@/types";
@@ -39,6 +39,7 @@ export default function Footer() {
             <Link key={social.id} href={social.link} target="_blank" className="flex items-center gap-2 hover:text-gray-400 transition duration-200">
               {social.name === "LinkedIn" && <FaLinkedin className="h-5 w-5" />}
               {social.name === "Github" && <FaGithub className="h-5 w-5" />}
+              {social.name === "Email" && <FaEnvelope className="h-5 w-5" />}
               <span>{social.name}</span>
             </Link>
           ))}
