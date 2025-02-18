@@ -1,59 +1,52 @@
-"use client"
-import React from "react";
+"use client";
+
+import React, { useEffect, useState } from "react";
 import { FaLinkedin, FaGithub } from "react-icons/fa";
 import LanguageSwitcher from "./LanguageSwitcher";
+import Link from "next/link";
+import { FooterDataType } from "@/types";
+import { useLanguage } from "../context/LanguageContext";
 
-const Footer = () => {
+export default function Footer() {
+  const [footerData, setFooterData] = useState<FooterDataType | null>(null);
+  const { language } = useLanguage();
+
+  useEffect(() => {
+    fetch(`/api/footer?lang=${language}`)
+      .then((res) => res.json())
+      .then((data) => setFooterData(data.data))
+      .catch((error) => console.error("Erreur lors du chargement du footer :", error));
+  }, [language]);
+
   return (
-    <footer className="text-white py-8 px-4 min-w-full relative overflow-hidden">
-        <div className="absolute inset-0 -z-10">
-            <div className="absolute top-10 left-1 w-[250px] h-[250px] bg-gradient-to-br from-blue-500 via-blue-700 to-black opacity-70 rounded-full blur-3xl animate-blob"></div>
-            <div className="absolute top-1 right-1 w-[300px] h-[300px] bg-gradient-to-br from-cyan-400 via-blue-500 to-black opacity-50 rounded-full blur-3xl animate-blob"></div>
-            <div className="absolute top-1/2 left-1/2 w-[200px] h-[200px] bg-gradient-to-br from-blue-800 to-black opacity-60 rounded-full blur-2xl animate-blob"></div> 
-        </div>
+    <footer className="relative w-full text-white py-14 overflow-hidden">
+      {/* Grand texte en arrière-plan */}
+      <h1 className="text-[15vw] font-bold text-gray-800 opacity-30 absolute inset-0 flex justify-center items-center select-none pointer-events-none">
+        Seonay.
+      </h1>
 
-
-        <div className="container mx-auto grid grid-cols-1 md:grid-cols-3 gap-8">
-        {/* Logo and Rights */}
-        <div className="flex flex-col items-center md:items-start">
-          <h1 className="text-xl font-bold text-primary">Seonay.</h1>
+      {/* Contenu du footer */}
+      <div className="relative z-10 flex flex-col items-center gap-4 md:flex-row md:justify-between md:gap-8 px-4 md:px-20">
+        <div className="flex flex-col items-start gap-2">
+          <span className="text-xs font-mono opacity-70">{footerData?.rights}</span> 
           <LanguageSwitcher />
-
-          <p className="text-sm mt-2">© 2025 MyWebsite. All rights reserved.</p>
-
         </div>
 
-        {/* Site Map */}
-        <div className="flex flex-col items-center md:items-start">
-          <h2 className="text-lg font-semibold mb-4 text-primary">Site Map</h2>
-          <ul className="space-y-2">
-            <li><a href="#" className="hover:text-primary">Home</a></li>
-            <li><a href="#" className="hover:text-primary">About</a></li>
-            <li><a href="#" className="hover:text-primary">Projects</a></li>
-            <li><a href="#" className="hover:text-primary">FAQ</a></li>
-          </ul>
-        </div>
 
-        {/* Socials and Legal */}
-        <div className="flex flex-col items-center md:items-start">
-          <h2 className="text-lg font-semibold mb-4 text-primary">Follow Us</h2>
-          <div className="flex space-x-4 mb-4">
-            <a href="https://www.linkedin.com/in/matheo-delaunay/" target="_blank" rel="noopener noreferrer" className="hover:text-blue-500" title="LinkedIn Profile">
-              <FaLinkedin size={24} />
-            </a>
-            <a href="https://github.com/D-Seonay" target="_blank" rel="noopener noreferrer" className="hover:text-gray-400" title="GitHub Profile">
-              <FaGithub size={24} />
-            </a>
-          </div>
-          <ul className="space-y-2">
-            <li><a href="#" className="hover:text-primary">Legal Notice</a></li>
-            <li><a href="#" className="hover:text-primary">Terms and Conditions</a></li>
-            <li><a href="mailto:contact@mywebsite.com" className="hover:text-primary">matheodelaunay04@gmail.com</a></li>
-          </ul>
+        
+        <div className="flex flex-row gap-4">
+          {footerData?.socials.map((social) => (
+            <Link key={social.id} href={social.link} target="_blank" className="flex items-center gap-2 hover:text-gray-400 transition duration-200">
+              {social.name === "LinkedIn" && <FaLinkedin className="h-5 w-5" />}
+              {social.name === "Github" && <FaGithub className="h-5 w-5" />}
+              <span>{social.name}</span>
+            </Link>
+          ))}
         </div>
+        
+        <span className="text-xs font-mono opacity-70">{footerData?.credits}</span>
+        
       </div>
     </footer>
   );
-};
-
-export default Footer;
+}

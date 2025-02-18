@@ -42,3 +42,17 @@ export type ServiceType = {
     id: string;
     title: string;
 };
+
+export type FooterDataType = {
+    title: string;
+    socials: SocialLink[];
+    rights: string;
+    credits: string;
+};
+
+export type SocialLink = {
+    id: string;
+    name: string;
+    icon: string;
+    link: string;
+};
