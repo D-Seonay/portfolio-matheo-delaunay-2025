@@ -1,56 +1,71 @@
 "use client";
 
-import { useState } from "react";
+import React, { useState } from "react";
 import { motion } from "framer-motion";
 
 const projects = [
-  { name: "Food-Collect", image: "/file.svg" },
-  { name: "Inventory Manager", image: "/images/inventory.png" },
-  { name: "Fake Shop", image: "/images/fake-shop.png" },
-  { name: "Campus Connect", image: "/images/campus-connect.png" },
-  { name: "Pokédex", image: "/images/pokedex.png" },
+  {
+    id: 1,
+    title: "Food Landing",
+    image: "/1.png",
+  },
+  {
+    id: 2,
+    title: "WebApp Design",
+    image: "/2.png",
+  },
+  {
+    id: 3,
+    title: "Key System",
+    image: "/3.png",
+  },
 ];
 
-export default function Projects() {
-  const [hoveredProject, setHoveredProject] = useState<{ name: string; image: string } | null>(null);
-  const [cursorPos, setCursorPos] = useState({ x: 0, y: 0 });
+export default function ProjectList() {
+  const [hoveredProject, setHoveredProject] = useState<string | null>(null);
+  const [mousePosition, setMousePosition] = useState({ x: 0, y: 0 });
 
-  const handleMouseMove = (e: React.MouseEvent<HTMLLIElement, MouseEvent>) => {
-    setCursorPos({ x: e.clientX, y: e.clientY });
+  const handleMouseMove = (e: React.MouseEvent) => {
+    setMousePosition({ x: e.clientX, y: e.clientY });
   };
 
   return (
-    <div className="relative w-full min-h-screen bg-gray-900 text-white p-10">
-      <h2 className="text-3xl font-bold mb-6">Mes Projets</h2>
-      <ul className="space-y-4">  
-        {projects.map((project, index) => (
-          <li
-            key={index}
-            className="text-xl cursor-pointer hover:text-blue-400"
-            onMouseEnter={() => setHoveredProject(project)}
+    <div className="relative min-h-screen bg-[#f6f4f0] text-black w-full p-8">
+      <h1 className="text-4xl font-semibold mb-10">Project List</h1>
+      <div className="flex flex-col gap-8">
+        {projects.map((project) => (
+          <div
+            key={project.id}
+            onMouseEnter={() => setHoveredProject(project.image)}
             onMouseLeave={() => setHoveredProject(null)}
             onMouseMove={handleMouseMove}
+            className="flex items-center gap-4 cursor-pointer"
           >
-            {project.name}
-          </li>
+            <span className="text-4xl font-bold text-yellow-500">
+              {project.id}
+            </span>
+            <h2 className="text-3xl font-semibold hover:italic transition duration-300">
+              {project.title}
+            </h2>
+          </div>
         ))}
-      </ul>
+      </div>
+
       {hoveredProject && (
         <motion.img
-          src={hoveredProject.image}
-          alt={hoveredProject.name}
-          className="absolute w-40 h-40 rounded-lg shadow-lg"
-          style={{
-            top: cursorPos.y + 10,
-            left: cursorPos.x + 10,
-            pointerEvents: "none",
+          src={hoveredProject}
+          alt="Preview"
+          initial={{ opacity: 0, scale: 0.5 }}
+          animate={{
+            opacity: 1,
+            scale: 1,
+            x: mousePosition.x - 150, // Décalage pour centrer l'image
+            y: mousePosition.y - 500, // Décalage pour centrer l'image
           }}
-          initial={{ opacity: 0, scale: 0.8 }}
-          animate={{ opacity: 1, scale: 1 }}
-          exit={{ opacity: 0, scale: 0.8 }}
+          transition={{ type: "spring", stiffness: 150, damping: 20 }}
+          className=" pointer-events-none rounded-full shadow-xl w-[300px] h-[300px] object-cover"
         />
       )}
     </div>
   );
 }
-
