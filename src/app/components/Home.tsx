@@ -7,6 +7,7 @@ import AnimatedButton from './AnimatedButton';
 import StatusButton from './StatusButton';
 import { useLanguage } from '../context/LanguageContext';
 import { HomeTextType } from '@/types';
+import ScrollDownIndicator from './ScrollDownIndicator';
 
 export default function Home() {
   const { language } = useLanguage();
@@ -69,6 +70,9 @@ export default function Home() {
           <AnimatedButton text={text.button} link="#" />
         </motion.div>
         <StatusButton />
+        <div className="absolute bottom-10 left-1/2 transform -translate-x-1/2 flex flex-col items-center gap-2">
+          <ScrollDownIndicator />
+        </div>
       </main>
     </div>
   );
