@@ -7,9 +7,8 @@ const texts: Record<string, HomeTextType> = {
     title: "Your Vision, My",
     titleHighlight: "Expertise",
     titleSecondaryPart: "Let's Build Together",
-    
     description:
-      "Turn your idea into a thriving digital product. With our hands-on support in strategy, design, and development, we'll craft a platform that ensures your launch is nothing short of remarkable.",
+      "Turn your idea into a thriving digital product. With our hands-on support in strategy, design, and development, I'll create a platform that ensures your launch is remarkable.",
     button: "Start Today",
   },
   fr: {
@@ -17,7 +16,7 @@ const texts: Record<string, HomeTextType> = {
     titleHighlight: "Expertise",
     titleSecondaryPart: "Construisons Ensemble",
     description:
-      "Transformez votre idée en un produit numérique florissant. Avec notre soutien en stratégie, design et développement, nous créerons une plateforme qui garantira le succès de votre lancement.",
+      "Transformez votre idée en un produit numérique florissant. Avec mon soutien en stratégie, design et développement, je créerai une plateforme qui garantira que votre lancement soit remarquable.",
     button: "Commencez Aujourd'hui",
   },
 };
