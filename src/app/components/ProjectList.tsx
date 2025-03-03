@@ -79,9 +79,6 @@ export default function ProjectList() {
               whileHover={{ scale: 1.02 }}
               transition={{ duration: 0.2 }}
             >
-              <span className="text-xl font-semibold text-primary">
-                {project.id}
-              </span>
               <div className="flex flex-col items-start">
                 <span className={`text-xl font-semibold transition-all ${
                   hoveredIndex === idx ? "text-yellow-500" : "text-white"

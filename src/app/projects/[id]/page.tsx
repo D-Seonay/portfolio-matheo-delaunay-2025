@@ -115,7 +115,7 @@ export default function ProjectDetail() {
           </div>
 
           {/* En-tête du projet */}
-          <div className="flex justify-between items-start">
+          <div className="flex justify-between items-start flex-col sm:flex-row">
             <div>
               <h1 className="text-4xl font-bold text-white mb-2">
                 {project.link ? (
@@ -133,7 +133,7 @@ export default function ProjectDetail() {
               </h1>
               <p className="text-xl text-gray-400">{project.description}</p>
             </div>
-            <div className="flex gap-2">
+            <div className="flex gap-2 mt-2 sm:mt-0">
               {project.tags.map((tag, index) => (
                 <span
                   key={index}
@@ -221,8 +221,8 @@ export default function ProjectDetail() {
               {/* Status du projet */}
               <div>
                 <h3 className="text-xl font-bold text-white mb-3">Status</h3>
-                <div className="bg-gray-900 rounded-lg p-4">
-                  <span className={`px-3 py-1 rounded-full text-sm ${
+                <div className="">
+                  <span className={`px-3 py-2 rounded-full text-sm ${
                     project.status === 'production' ? 'bg-green-500/20 text-green-500' :
                     project.status === 'development' ? 'bg-blue-500/20 text-blue-500' :
                     project.status === 'completed' ? 'bg-purple-500/20 text-purple-500' :

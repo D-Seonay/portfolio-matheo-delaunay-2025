@@ -111,7 +111,7 @@ const projects: Record<Lang, Project[]> = {
       id: "4",
       name: "Portfolio",
       description: "Portfolio personnel présentant mes projets et compétences",
-      image: "/projects/4/portfolio.png", 
+      image: "/projects/4/portfolio-home.png", 
       link: "https://matheo-delaunay.tech",
       status: "production",
       repository: {
