@@ -6,6 +6,8 @@ import FAQ from "./components/FAQ";
 import Footer from "./components/Footer";
 import ScrollToTopButton from "./components/ScrollToTopButton";
 import SkillsList from "./components/SkillsList";
+import Projects from "@/app/components/ProjectList";
+import MenuList from "@/app/components/MenuList";
 
 
 export default function Home() {
@@ -14,7 +16,8 @@ export default function Home() {
       <Navbar />
       <HomePage />
       <ServicesBanner />
-      <AboutMe /> 
+      {/*<AboutMe />*/}
+        <Projects />
       <SkillsList />
       <FAQ />
       <Footer />
