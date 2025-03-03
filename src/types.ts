@@ -1,15 +1,36 @@
+export type ProjectStatus = 'production' | 'development' | 'completed' | 'archived' | 'paused';
+
+export interface Repository {
+    url: string;
+    isPrivate: boolean;
+}
+
+export interface Collaborator {
+    id: string;
+    name: string;
+    role: string;
+    image?: string;
+    link?: string;
+}
 
 export interface Project {
     id: string;
     name: string;
     description: string;
+    longDescription: string;
     image: string;
     link: string;
+    status: ProjectStatus;
+    repository?: Repository;
     tags: string[];
+    features: string[];
+    technologies: string[];
+    screenshots: string[];
+    collaborators: Collaborator[];
 }
 
 export interface ApiResponse<T> {
-    data: T;
+    data?: T;
     error?: string;
     message?: string;
 }  
