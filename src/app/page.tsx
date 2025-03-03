@@ -1,13 +1,11 @@
 import Navbar from "./components/Navbar";
 import HomePage from "./components/Home";
 import ServicesBanner from "./components/ServicesBanner";
-import AboutMe from "./components/AboutMe";
 import FAQ from "./components/FAQ";
 import Footer from "./components/Footer";
 import ScrollToTopButton from "./components/ScrollToTopButton";
 import SkillsList from "./components/SkillsList";
 import Projects from "@/app/components/ProjectList";
-import MenuList from "@/app/components/MenuList";
 
 
 export default function Home() {
@@ -16,7 +14,6 @@ export default function Home() {
       <Navbar />
       <HomePage />
       <ServicesBanner />
-      {/*<AboutMe />*/}
         <Projects />
       <SkillsList />
       <FAQ />
