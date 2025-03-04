@@ -7,7 +7,7 @@ const projects: Record<Lang, Project[]> = {
       id: "1", 
       name: "App Restaurant", 
       description: "Application web pour la gestion de restaurants", 
-      image: "/1.png", 
+      image: "/projects/1/app-restaurant-1.png", 
       link: "#", 
       status: "development",
       repository: {
@@ -29,9 +29,7 @@ const projects: Record<Lang, Project[]> = {
         "PostgreSQL"
       ],
       screenshots: [
-        "/1.png",
-        "/2.png",
-        "/3.png"
+        "/projects/1/app-restaurant-1.png",
       ],
       collaborators: []
     },
@@ -110,7 +108,7 @@ const projects: Record<Lang, Project[]> = {
         url: "https://github.com/D-Seonay/portfolio",
         isPrivate: false
       },
-      tags: ["React", "Styled Components", "Framer Motion"],
+      tags: ["React", "Framer Motion"],
       longDescription: "Portfolio personnel développé avec React.js, présentant mes compétences, projets et parcours professionnel. Inspiré du design de Katy_v4, ce site vitrine met en valeur mon travail de développeur de manière moderne et interactive.",
       features: [
         "Présentation des projets",
@@ -121,7 +119,6 @@ const projects: Record<Lang, Project[]> = {
       ],
       technologies: [
         "React",
-        "Styled Components",
         "Framer Motion",
       ],
       screenshots: [
@@ -139,7 +136,7 @@ const projects: Record<Lang, Project[]> = {
       id: "1", 
       name: "Restaurant App", 
       description: "Web application for restaurant management", 
-      image: "/1.png", 
+      image: "/projects/1/app-restaurant-1.png", 
       link: "#", 
       status: "development",
       repository: {
@@ -161,9 +158,7 @@ const projects: Record<Lang, Project[]> = {
         "PostgreSQL"
       ],
       screenshots: [
-        "/1.png",
-        "/2.png",
-        "/3.png"
+        "/projects/1/app-restaurant-1.png",
       ],
       collaborators: []
     },
@@ -244,7 +239,7 @@ const projects: Record<Lang, Project[]> = {
         url: "https://github.com/D-Seonay/portfolio",
         isPrivate: false
       },
-      tags: ["React", "Styled Components", "Framer Motion"],
+      tags: ["React", "Framer Motion"],
       longDescription: "Personal portfolio developed with React.js, showcasing my skills, projects and professional journey. Inspired by Katy_v4's design, this showcase site highlights my work as a developer in a modern and interactive way.",
       features: [
         "Project showcase",
@@ -255,7 +250,6 @@ const projects: Record<Lang, Project[]> = {
       ],
       technologies: [
         "React",
-        "Styled Components",
         "Framer Motion",
       ],
       screenshots: [
