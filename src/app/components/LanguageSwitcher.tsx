@@ -11,7 +11,7 @@ const LanguageSwitcher = () => {
       onClick={toggleLanguage}
       className="py-2 text-sm text-gray-300 hover:text-gray-100"
     >
-      {language === "fr" ? "Changer en Anglais  🇬🇧" : "Switch to Frensh  🇫🇷"}
+      {language === "fr" ? "Changer en Anglais  🇬🇧" : "Switch to French  🇫🇷"}
     </button>
   );
 };
