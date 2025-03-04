@@ -18,11 +18,24 @@ export default function ProjectDetail() {
   const [error, setError] = useState<string | null>(null);
   const [activeImage, setActiveImage] = useState(0);
   const [hasNextProject, setHasNextProject] = useState(false);
+  const [hasPreviousProject, setHasPreviousProject] = useState(false);
 
   useEffect(() => {
     const fetchProject = async () => {
       try {
         setIsLoading(true);
+        // Précharger l'image principale avant même de charger les données
+        if (id) {
+          const preloadLink = document.createElement('link');
+          preloadLink.rel = 'preload';
+          preloadLink.as = 'image';
+          preloadLink.href = `/api/projects/${id}/image`;
+          preloadLink.type = 'image/webp';
+          preloadLink.media = '(min-width: 768px)';
+          preloadLink.crossOrigin = 'anonymous';
+          document.head.appendChild(preloadLink);
+        }
+
         const response = await fetch(`/api/projects?id=${id}&lang=${language}`);
         const data: ApiResponse<Project> = await response.json();
         
@@ -36,6 +49,13 @@ export default function ProjectDetail() {
         const nextResponse = await fetch(`/api/projects?id=${parseInt(id) + 1}&lang=${language}`);
         const nextData = await nextResponse.json();
         setHasNextProject(!nextData.error && nextData.data);
+
+        // Vérifier si le projet précédent existe
+        if (parseInt(id) > 1) {
+          const prevResponse = await fetch(`/api/projects?id=${parseInt(id) - 1}&lang=${language}`);
+          const prevData = await prevResponse.json();
+          setHasPreviousProject(!prevData.error && prevData.data);
+        }
       } catch (err) {
         setError(err instanceof Error ? err.message : "Failed to load project");
       } finally {
@@ -46,16 +66,46 @@ export default function ProjectDetail() {
     fetchProject();
   }, [id, language]);
 
+  // Précharger l'image principale avec plusieurs techniques
+  useEffect(() => {
+    if (project?.screenshots[0]) {
+      // 1. Préchargement avec link preload
+      const link = document.createElement('link');
+      link.rel = 'preload';
+      link.as = 'image';
+      link.href = project.screenshots[0];
+      link.type = 'image/webp';
+      link.media = '(min-width: 768px)';
+      link.crossOrigin = 'anonymous';
+      document.head.appendChild(link);
+
+      // 2. Préchargement avec fetch
+      fetch(project.screenshots[0], {
+        method: 'GET',
+        mode: 'cors',
+        cache: 'force-cache',
+        headers: {
+          'Accept': 'image/webp,image/*,*/*;q=0.8',
+        }
+      });
+
+      // 3. Préchargement avec Image
+      const img = new window.Image();
+      img.src = project.screenshots[0];
+      img.crossOrigin = 'anonymous';
+    }
+  }, [project?.screenshots[0]]);
+
   if (isLoading) {
     return (
-      <div className="min-h-screen bg-[#0a0a0a] p-8">
+      <div className="p-8 mt-14">
         <div className="max-w-6xl mx-auto">
           <div className="animate-pulse space-y-8">
-            <div className="h-8 bg-gray-900 rounded w-1/4"></div>
-            <div className="h-96 bg-gray-900 rounded"></div>
+            <div className="h-8 bg-gray-900/80 backdrop-blur-sm rounded w-1/4"></div>
+            <div className="aspect-video bg-gray-900/80 backdrop-blur-sm rounded"></div>
             <div className="space-y-4">
-              <div className="h-4 bg-gray-900 rounded w-3/4"></div>
-              <div className="h-4 bg-gray-900 rounded w-1/2"></div>
+              <div className="h-4 bg-gray-900/80 backdrop-blur-sm rounded w-3/4"></div>
+              <div className="h-4 bg-gray-900/80 backdrop-blur-sm rounded w-1/2"></div>
             </div>
           </div>
         </div>
@@ -65,7 +115,7 @@ export default function ProjectDetail() {
 
   if (error || !project) {
     return (
-      <div className="min-h-screen bg-[#0a0a0a] p-8">
+      <div className="p-8 mt-14">
         <div className="max-w-6xl mx-auto">
           <div className="bg-red-500/10 border border-red-500 rounded-lg p-4 text-red-500">
             {error || "Project not found"}
@@ -80,40 +130,42 @@ export default function ProjectDetail() {
     router.push(`/projects/${nextId}`);
   };
 
+  const handlePreviousProject = () => {
+    const prevId = parseInt(project.id) - 1;
+    router.push(`/projects/${prevId}`);
+  };
+
   return (
-    <div className="min-h-screen bg-[#0a0a0a] p-8">
-      <div className="max-w-6xl mx-auto">
+    <div className="p-8 mt-14 relative min-h-screen">
+      {/* Background Image */}
+      <Image
+        src="/grid.svg"
+        alt="grid bg"
+        className="absolute inset-0 z-0 min-w-full"
+        layout="fill"
+        objectFit="cover"
+        quality={100}
+        priority
+        loading="eager"
+      />
+
+      {/* Background Shapes */}
+      <div className="absolute inset-0 z-0 opacity-50 overflow-hidden">
+        <div className="absolute top-10 left-1/4 w-[500px] h-[500px] bg-gradient-to-br from-blue-500 via-blue-700 to-black opacity-70 rounded-full blur-3xl animate-blob"></div>
+        <div className="absolute bottom-20 right-1/3 w-[600px] h-[600px] bg-gradient-to-br from-cyan-400 via-blue-500 to-black opacity-50 rounded-full blur-3xl animate-blob"></div>
+        <div className="absolute top-1/3 left-1/2 w-[400px] h-[400px] bg-gradient-to-br from-blue-800 to-black opacity-60 rounded-full blur-2xl animate-blob"></div>
+      </div>
+
+      {/* Glassmorphism Overlay */}
+      <div className="absolute inset-0 bg-gray-black/20 backdrop-blur-sm -z-5"></div>
+
+      <div className="max-w-6xl mx-auto relative">
         <motion.div
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.5 }}
           className="space-y-8"
         >
-          {/* Navigation buttons */}
-          <div className="flex justify-between items-center mb-8">
-            <motion.button
-              whileHover={{ scale: 1.05 }}
-              whileTap={{ scale: 0.95 }}
-              onClick={() => router.push('/')}
-              className="px-6 py-3 bg-gray-900 text-yellow-500 rounded-lg font-semibold flex items-center gap-2 hover:bg-gray-800 transition-colors"
-            >
-              ← Retour
-            </motion.button>
-            <motion.button
-              whileHover={hasNextProject ? { scale: 1.05 } : {}}
-              whileTap={hasNextProject ? { scale: 0.95 } : {}}
-              onClick={handleNextProject}
-              disabled={!hasNextProject}
-              className={`px-6 py-3 rounded-lg font-semibold flex items-center gap-2 transition-colors ${
-                hasNextProject 
-                  ? 'bg-yellow-500 text-gray-900 hover:bg-yellow-400 cursor-pointer'
-                  : 'bg-gray-700 text-gray-400 cursor-not-allowed'
-              }`}
-            >
-              Projet suivant →
-            </motion.button>
-          </div>
-
           {/* En-tête du projet */}
           <div className="flex justify-between items-start flex-col sm:flex-row">
             <div>
@@ -137,7 +189,7 @@ export default function ProjectDetail() {
               {project.tags.map((tag, index) => (
                 <span
                   key={index}
-                  className="px-3 py-1 bg-gray-900 text-gray-300 rounded-full text-sm"
+                  className="px-3 py-1 bg-gray-900/80 backdrop-blur-sm text-gray-300 rounded-full text-sm"
                 >
                   {tag}
                 </span>
@@ -147,12 +199,27 @@ export default function ProjectDetail() {
 
           {/* Galerie d'images */}
           <div className="space-y-4">
-            <div className="relative aspect-video bg-gray-900 rounded-xl overflow-hidden">
+            <div className="relative aspect-video bg-gray-900/80 backdrop-blur-sm rounded-xl overflow-hidden">
               <Image
                 src={project.screenshots[activeImage]}
                 alt={`${project.name} main screenshot`}
                 fill
+                sizes="(max-width: 768px) 100vw, (max-width: 1200px) 80vw, 1200px"
                 className="object-cover"
+                priority
+                loading="eager"
+                quality={90}
+                placeholder="blur"
+                blurDataURL="data:image/jpeg;base64,/9j/4AAQSkZJRgABAQAAAQABAAD/4gHYSUNDX1BST0ZJTEUAAQEAAAHIAAAAAAQwAABtbnRyUkdCIFhZWiAH4AABAAEAAAAAAABhY3NwAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAQAA9tYAAQAAAADTLQAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAlkZXNjAAAA8AAAACRyWFlaAAABFAAAABRnWFlaAAABKAAAABRiWFlaAAABPAAAABR3dHB0AAABUAAAABRyVFJDAAABZAAAAChnVFJDAAABZAAAAChiVFJDAAABZAAAAChjcHJ0AAABjAAAADxtbHVjAAAAAAAAAAEAAAAMZW5VUwAAAAgAAAAcAHMAUgBHAEJYWVogAAAAAAAAb6IAADj1AAADkFhZWiAAAAAAAABimQAAt4UAABjaWFlaIAAAAAAAACSgAAAPhAAAts9YWVogAAAAAAAA9tYAAQAAAADTLXBhcmEAAAAAAAQAAAACZmYAAPKnAAANWQAAE9AAAApbAAAAAAAAAABtbHVjAAAAAAAAAAEAAAAMZW5VUwAAACAAAAAcAEcAbwBvAGcAbABlACAASQBuAGMALgAgADIAMAAxADb/2wBDABQODxIPDRQSEBIXFRQdHx4eHRoaHSQtJSAyVC08MTY3LjIyOUFTRjo/Tj4yMkhiSk5NVVVXW1xbOEVJW1VfX1//2wBDARUXFx4aHjshITtVQy8vVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVX/wAARCAAIAAoDASIAAhEBAxEB/8QAFQABAQAAAAAAAAAAAAAAAAAAAAb/xAAUEAEAAAAAAAAAAAAAAAAAAAAA/8QAFQEBAQAAAAAAAAAAAAAAAAAAAAX/xAAUEQEAAAAAAAAAAAAAAAAAAAAA/9oADAMBAAIRAxEAPwCdABmX/9k="
+                decoding="async"
+                fetchPriority="high"
+                crossOrigin="anonymous"
+                onLoad={(e) => {
+                  // Marquer l'image comme chargée pour le LCP
+                  if (typeof window !== 'undefined') {
+                    window.performance?.mark?.('lcp-image-loaded');
+                  }
+                }}
               />
             </div>
 
@@ -161,7 +228,7 @@ export default function ProjectDetail() {
               {project.screenshots.map((screenshot, index) => (
                 <div 
                   key={index}
-                  className={`relative aspect-video bg-gray-900 rounded-lg overflow-hidden cursor-pointer transition-all ${
+                  className={`relative aspect-video bg-gray-900/80 backdrop-blur-sm rounded-lg overflow-hidden cursor-pointer transition-all ${
                     activeImage === index ? 'ring-2 ring-yellow-500' : 'hover:opacity-80'
                   }`}
                   onClick={() => setActiveImage(index)}
@@ -170,7 +237,12 @@ export default function ProjectDetail() {
                     src={screenshot}
                     alt={`${project.name} thumbnail ${index + 1}`}
                     fill
+                    sizes="(max-width: 768px) 33vw, 25vw"
                     className="object-cover"
+                    loading={index === 0 ? "eager" : "lazy"}
+                    quality={75}
+                    decoding="async"
+                    crossOrigin="anonymous"
                   />
                 </div>
               ))}
@@ -187,33 +259,33 @@ export default function ProjectDetail() {
 
               {/* Section Collaborateurs */}
               {project.collaborators.length > 0 && (
-              <div>
-                <h2 className="text-2xl font-bold text-white mb-4">Équipe du projet</h2>
-                <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
-                  {project.collaborators.map((collaborator) => (
-                    <motion.div
-                      key={collaborator.id}
-                      whileHover={{ scale: 1.02 }}
-                      className="bg-gray-900 rounded-lg p-4 flex items-center gap-4"
-                    >
-                      <div>
-                        <h3 className="text-white font-semibold">{collaborator.name}</h3>
-                        <p className="text-gray-400 text-sm">{collaborator.role}</p>
-                        {collaborator.link && (
-                          <Link
-                            href={collaborator.link}
-                            target="_blank"
-                            rel="noopener noreferrer"
-                            className="text-yellow-500 text-sm hover:underline mt-1 inline-block"
-                          >
-                            Voir le profil →
-                          </Link>
-                        )}
-                      </div>
-                    </motion.div>
-                  ))}
+                <div>
+                  <h2 className="text-2xl font-bold text-white mb-4">Équipe du projet</h2>
+                  <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
+                    {project.collaborators.map((collaborator) => (
+                      <motion.div
+                        key={collaborator.id}
+                        whileHover={{ scale: 1.02 }}
+                        className="bg-gray-900/80 backdrop-blur-sm rounded-lg p-4 flex items-center gap-4"
+                      >
+                        <div>
+                          <h3 className="text-white font-semibold">{collaborator.name}</h3>
+                          <p className="text-gray-400 text-sm">{collaborator.role}</p>
+                          {collaborator.link && (
+                            <Link
+                              href={collaborator.link}
+                              target="_blank"
+                              rel="noopener noreferrer"
+                              className="text-yellow-500 text-sm hover:underline mt-1 inline-block"
+                            >
+                              Voir le profil →
+                            </Link>
+                          )}
+                        </div>
+                      </motion.div>
+                    ))}
+                  </div>
                 </div>
-              </div>
               )}
             </div>
             
@@ -224,7 +296,7 @@ export default function ProjectDetail() {
                 <div className="">
                   <span className={`px-3 py-2 rounded-full text-sm ${
                     project.status === 'production' ? 'bg-green-500/20 text-green-500' :
-                    project.status === 'development' ? 'bg-blue-500/20 text-blue-500' :
+                    project.status === 'development' ? 'bg-blue-500/20 text-blue-400' :
                     project.status === 'completed' ? 'bg-purple-500/20 text-purple-500' :
                     project.status === 'archived' ? 'bg-gray-500/20 text-gray-500' :
                     'bg-yellow-500/20 text-yellow-500' // pour paused
@@ -258,7 +330,7 @@ export default function ProjectDetail() {
                   {project.technologies.map((tech, index) => (
                     <span
                       key={index}
-                      className="px-3 py-1 bg-gray-900 text-gray-300 rounded-full text-sm"
+                      className="px-3 py-1 bg-gray-900/80 backdrop-blur-sm text-gray-300 rounded-full text-sm"
                     >
                       {tech}
                     </span>
@@ -270,7 +342,7 @@ export default function ProjectDetail() {
               {project.repository && (
                 <div>
                   <h3 className="text-xl font-bold text-white mb-3">Repository</h3>
-                  <div className="bg-gray-900 rounded-lg p-4">
+                  <div className="bg-gray-900/80 backdrop-blur-sm rounded-lg p-4">
                     <div className="flex items-center justify-between mb-2">
                       <span className="text-gray-300">Status:</span>
                       <span className={`px-2 py-1 rounded text-xs ${
@@ -315,7 +387,7 @@ export default function ProjectDetail() {
                     href={project.link}
                     target="_blank"
                     rel="noopener noreferrer"
-                    className="flex items-center gap-2 text-yellow-500 hover:text-yellow-400 transition-colors bg-gray-900 rounded-lg p-4"
+                    className="flex items-center gap-2 text-yellow-500 hover:text-yellow-400 transition-colors bg-gray-900/80 backdrop-blur-sm rounded-lg p-4"
                   >
                     <svg
                       className="w-5 h-5"
@@ -334,6 +406,54 @@ export default function ProjectDetail() {
                   </Link>
                 </div>
               )}
+            </div>
+          </div>
+
+          {/* Navigation buttons at the bottom */}
+          <div className="relative backdrop-blur-sm p-4">
+            <div className="max-w-6xl mx-auto flex justify-between items-center gap-4">
+              <div className="flex items-center gap-4">
+
+                
+                <motion.button
+                  whileHover={hasPreviousProject ? { scale: 1.05 } : {}}
+                  whileTap={hasPreviousProject ? { scale: 0.95 } : {}}
+                  onClick={handlePreviousProject}
+                  disabled={!hasPreviousProject}
+                  className={`px-4 py-2 rounded-lg font-semibold flex items-center gap-2 transition-colors ${
+                    hasPreviousProject 
+                      ? 'bg-gray-800 text-yellow-500 hover:bg-gray-700 cursor-pointer'
+                      : 'bg-gray-800/50 text-gray-500 cursor-not-allowed'
+                  }`}
+                >
+                  ← Précédent
+                </motion.button>
+              </div>
+
+              {project.link && project.link !== "#" && (
+                <Link
+                  href={project.link}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="px-4 py-2 bg-yellow-500 text-gray-900 rounded-lg font-semibold flex items-center gap-2 hover:bg-yellow-400 transition-colors"
+                >
+                  Voir le projet en direct ↗
+                </Link>
+              )}
+
+              <motion.button
+                whileHover={hasNextProject ? { scale: 1.05 } : {}}
+                whileTap={hasNextProject ? { scale: 0.95 } : {}}
+                onClick={handleNextProject}
+                disabled={!hasNextProject}
+                className={`px-4 py-2 rounded-lg font-semibold flex items-center gap-2 transition-colors ${
+                  hasNextProject 
+                    ? 'bg-gray-800 text-yellow-500 hover:bg-gray-700 cursor-pointer'
+                    : 'bg-gray-800/50 text-gray-500 cursor-not-allowed'
+                }`}
+              >
+                Suivant →
+              </motion.button>
             </div>
           </div>
         </motion.div>

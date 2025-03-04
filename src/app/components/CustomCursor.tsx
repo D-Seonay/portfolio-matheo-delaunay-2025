@@ -6,32 +6,56 @@ import { motion } from "framer-motion";
 export default function CustomCursor() {
   const [mousePosition, setMousePosition] = useState({ x: 0, y: 0 });
   const [isHovering, setIsHovering] = useState(false);
+  const [isMobile, setIsMobile] = useState(false);
 
   useEffect(() => {
-    const updateMousePosition = (e: MouseEvent) => {
-      setMousePosition({ x: e.clientX, y: e.clientY });
+    // Check if device is mobile
+    const checkMobile = () => {
+      setIsMobile(window.matchMedia('(max-width: 768px)').matches || 'ontouchstart' in window);
     };
 
-    const handleMouseEnter = () => {
-      const interactiveElements = document.querySelectorAll('a, button, Link, [role="button"]');
-      interactiveElements.forEach(element => {
-        element.addEventListener('mouseenter', () => setIsHovering(true));
-        element.addEventListener('mouseleave', () => setIsHovering(false));
-      });
-    };
+    // Initial check
+    checkMobile();
 
-    window.addEventListener('mousemove', updateMousePosition);
-    handleMouseEnter();
+    // Listen for window resize
+    window.addEventListener('resize', checkMobile);
+
+    // Only add mouse tracking if not mobile
+    if (!isMobile) {
+      const updateMousePosition = (e: MouseEvent) => {
+        setMousePosition({ x: e.clientX, y: e.clientY });
+      };
+
+      const handleMouseEnter = () => {
+        const interactiveElements = document.querySelectorAll('a, button, Link, [role="button"]');
+        interactiveElements.forEach(element => {
+          element.addEventListener('mouseenter', () => setIsHovering(true));
+          element.addEventListener('mouseleave', () => setIsHovering(false));
+        });
+      };
+
+      window.addEventListener('mousemove', updateMousePosition);
+      handleMouseEnter();
+
+      return () => {
+        window.removeEventListener('mousemove', updateMousePosition);
+        window.removeEventListener('resize', checkMobile);
+        const interactiveElements = document.querySelectorAll('a, button, Link, [role="button"]');
+        interactiveElements.forEach(element => {
+          element.removeEventListener('mouseenter', () => setIsHovering(true));
+          element.removeEventListener('mouseleave', () => setIsHovering(false));
+        });
+      };
+    }
 
     return () => {
-      window.removeEventListener('mousemove', updateMousePosition);
-      const interactiveElements = document.querySelectorAll('a, button, Link, [role="button"]');
-      interactiveElements.forEach(element => {
-        element.removeEventListener('mouseenter', () => setIsHovering(true));
-        element.removeEventListener('mouseleave', () => setIsHovering(false));
-      });
+      window.removeEventListener('resize', checkMobile);
     };
-  }, []);
+  }, [isMobile]);
+
+  if (isMobile) {
+    return null;
+  }
 
   return (
     <>
@@ -70,4 +94,4 @@ export default function CustomCursor() {
       />
     </>
   );
-} 
+}

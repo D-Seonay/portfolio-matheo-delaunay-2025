@@ -69,19 +69,18 @@ const projects: Record<Lang, Project[]> = {
       id: "3",
       name: "Pokédex React-Django",
       description: "Application web de gestion de Pokémon",
-      image: "/projects/3/pokedex.png",
-      link: "https://pokedex-react-django.vercel.app",
+      image: "/projects/3/pokedex-home.png",
+      link: "",
       status: "development", 
       repository: {
         url: "https://github.com/D-Seonay/pokedex-react-django",
         isPrivate: false
       },
       tags: ["React", "Django", "SQLite3"],
-      longDescription: "Une application web complète permettant d'afficher et d'interagir avec les données des Pokémon. Le backend Django gère les utilisateurs et les données Pokémon, tandis que le frontend React offre une expérience utilisateur dynamique. L'application récupère les données via l'API PokeAPI, les stocke dans SQLite3, et permet aux utilisateurs de s'affronter dans des duels avec leurs Pokémon favoris.",
+      longDescription: "Une application web complète permettant d'afficher et d'interagir avec les données des Pokémon. Le backend Django gère les utilisateurs et les données Pokémon, tandis que le frontend React offre une expérience utilisateur dynamique. L'application récupère les données via l'API PokeAPI, les stocke dans SQLite3.",
       features: [
         "Authentification utilisateur",
         "Intégration PokeAPI",
-        "Système de duels entre joueurs",
         "Tableau des scores",
         "Gestion des Pokémon favoris"
       ],
@@ -95,7 +94,8 @@ const projects: Record<Lang, Project[]> = {
       screenshots: [
         "/projects/3/pokedex-home.png",
         "/projects/3/pokedex-detail.png",
-        "/projects/3/pokedex-battle.png"
+        "/projects/3/pokedex-item.png",
+        "/projects/3/pokedex-login.png"
       ],
       collaborators: [
         {
@@ -218,8 +218,8 @@ const projects: Record<Lang, Project[]> = {
       id: "3",
       name: "React-Django Pokédex",
       description: "Pokémon management web application",
-      image: "/projects/3/pokedex.png",
-      link: "https://pokedex-react-django.vercel.app",
+      image: "/projects/3/pokedex-home.png",
+      link: "",
       status: "development", 
       repository: {
         url: "https://github.com/D-Seonay/pokedex-react-django",
@@ -244,7 +244,8 @@ const projects: Record<Lang, Project[]> = {
       screenshots: [
         "/projects/3/pokedex-home.png",
         "/projects/3/pokedex-detail.png",
-        "/projects/3/pokedex-battle.png"
+        "/projects/3/pokedex-item.png",
+        "/projects/3/pokedex-login.png"
       ],
       collaborators: [
         {
@@ -260,7 +261,7 @@ const projects: Record<Lang, Project[]> = {
       id: "4",
       name: "Portfolio",
       description: "Personal portfolio showcasing my projects and skills",
-      image: "/projects/4/portfolio.png", 
+      image: "/projects/4/portfolio-home.png",
       link: "https://matheo-delaunay.tech",
       status: "production",
       repository: {

@@ -12,12 +12,20 @@ export default function Navbar() {
     setIsOpen(!isOpen);
   };
 
+  const scrollToSection = (sectionId: string) => {
+    const section = document.getElementById(sectionId);
+    if (section) {
+      section.scrollIntoView({ behavior: 'smooth' });
+      setIsOpen(false);
+    }
+  };
+
   return (
     <motion.nav
       initial={{ opacity: 0, y: -20 }}
       animate={{ opacity: 1, y: 0 }}
       transition={{ duration: 0.5 }}
-      className="fixed top-0 left-0 w-full py-4 px-6 flex justify-between items-center z-50"
+      className="fixed top-0 left-0 w-full py-4 px-6 flex justify-between items-center z-20"
     >
       {/* Logo */}
       <Link href="/" className="text-primary text-2xl font-bold">
@@ -33,29 +41,35 @@ export default function Navbar() {
             whileTap={{ scale: 0.9 }}
             className="cursor-pointer mx-2"
           >
-            <Link href={`#${item.toLowerCase().replace(" ", "-")}`} className="text-white text-lg hover:text-primary transition">
+            <button 
+              onClick={() => scrollToSection(item.toLowerCase().replace(" ", "-"))}
+              className="text-white text-lg hover:text-primary transition"
+            >
               {item}
-            </Link>
+            </button>
           </motion.li>
         ))}
       </ul>
 
       {/* CTA Contact */}
       <motion.div whileHover={{ scale: 1.1 }} whileTap={{ scale: 0.9 }} className="hidden md:block">
-        <Link href="#contact" className="bg-primary text-black px-6 py-2 rounded-xl text-lg font-bold shadow-md hover:bg-yellow-500 transition">
+        <button 
+          onClick={() => scrollToSection('contact')}
+          className="bg-primary text-black px-6 py-2 rounded-xl text-lg font-bold shadow-md hover:bg-yellow-500 transition"
+        >
           Contact
-        </Link>
+        </button>
       </motion.div>
 
       {/* Burger Menu (Mobile) */}
       <div className="md:hidden text-white hover:text-primary transition">
         <button 
-        onClick={toggleMenu}
-        className="text-2xl"
-        type="button"
-        aria-label="Open Menu"
+          onClick={toggleMenu}
+          className="text-2xl"
+          type="button"
+          aria-label="Open Menu"
         >
-            <FaBars size={24} />
+          <FaBars size={24} />
         </button>
       </div>
 
@@ -84,13 +98,12 @@ export default function Navbar() {
               whileHover={{ scale: 1.1 }}
               whileTap={{ scale: 0.9 }}
             >
-              <Link
-                href={`#${item.toLowerCase().replace(" ", "-")}`}
+              <button
+                onClick={() => scrollToSection(item.toLowerCase().replace(" ", "-"))}
                 className="text-white text-2xl hover:text-primary transition"
-                onClick={toggleMenu} // Ferme le menu après un clic
               >
                 {item}
-              </Link>
+              </button>
             </motion.div>
           ))}
         </motion.div>
