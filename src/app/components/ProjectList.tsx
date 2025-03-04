@@ -71,7 +71,7 @@ export default function ProjectList() {
             onMouseLeave={() => setHoveredIndex(null)}
           >
             <motion.div
-              className="flex items-center justify-between md:p-6 p-2 border-b border-gray-700 rounded-lg bg-gray-800 cursor-pointer transition-all duration-100"
+              className="flex items-left sm:items-center justify-between sm:flex-row flex-col md:p-6 p-2 border-b border-gray-700 rounded-lg bg-gray-800 cursor-pointer transition-all duration-100"
               animate={{ 
                 backgroundColor: hoveredIndex === idx ? "rgba(17, 17, 17, 0.9)" : "rgba(31, 41, 55, 0.7)",
                 scale: hoveredIndex === idx ? 1.02 : 1
@@ -85,7 +85,7 @@ export default function ProjectList() {
                 }`}>
                   {project.name}
                 </span>
-                <span className="text-sm text-gray-400">{project.description}</span>
+                <span className="text-sm font-normal sm:text-base text-gray-400">{project.description}</span>
               </div>
               <div className="flex items-center gap-4">
                 <div className="flex gap-2">
