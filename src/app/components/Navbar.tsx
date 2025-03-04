@@ -42,6 +42,9 @@ export default function Navbar() {
             className="cursor-pointer mx-2"
           >
             <button 
+              type="button"
+              tabIndex={0}
+              role="button"
               onClick={() => scrollToSection(item.toLowerCase().replace(" ", "-"))}
               className="text-white text-lg hover:text-primary transition"
             >
@@ -54,6 +57,9 @@ export default function Navbar() {
       {/* CTA Contact */}
       <motion.div whileHover={{ scale: 1.1 }} whileTap={{ scale: 0.9 }} className="hidden md:block">
         <button 
+          type="button"
+          tabIndex={0}
+          role="button"
           onClick={() => scrollToSection('contact')}
           className="bg-primary text-black px-6 py-2 rounded-xl text-lg font-bold shadow-md hover:bg-yellow-500 transition"
         >
@@ -64,9 +70,11 @@ export default function Navbar() {
       {/* Burger Menu (Mobile) */}
       <div className="md:hidden text-white hover:text-primary transition">
         <button 
+          type="button"
+          tabIndex={0}
+          role="button"
           onClick={toggleMenu}
           className="text-2xl"
-          type="button"
           aria-label="Open Menu"
         >
           <FaBars size={24} />
@@ -99,6 +107,9 @@ export default function Navbar() {
               whileTap={{ scale: 0.9 }}
             >
               <button
+                type="button"
+                tabIndex={0}
+                role="button"
                 onClick={() => scrollToSection(item.toLowerCase().replace(" ", "-"))}
                 className="text-white text-2xl hover:text-primary transition"
               >
