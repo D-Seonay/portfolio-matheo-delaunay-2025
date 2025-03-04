@@ -4,8 +4,8 @@ import ServicesBanner from "./components/ServicesBanner";
 import FAQ from "./components/FAQ";
 import Footer from "./components/Footer";
 import ScrollToTopButton from "./components/ScrollToTopButton";
-import SkillsList from "./components/SkillsList";
 import Projects from "@/app/components/ProjectList";
+import AboutMe from "./components/AboutMe";
 
 
 export default function Home() {
@@ -14,8 +14,8 @@ export default function Home() {
       <Navbar />
       <HomePage />
       <ServicesBanner />
-        <Projects />
-      <SkillsList />
+      <AboutMe />
+      <Projects />
       <FAQ />
       <Footer />
       <ScrollToTopButton />

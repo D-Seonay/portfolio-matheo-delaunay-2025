@@ -77,3 +77,32 @@ export type SocialLink = {
     icon: string;
     link: string;
 };
+
+export interface Experience {
+  title: string;
+  company: string;
+  period: string;
+  description: string;
+}
+
+export interface Education {
+  school: string;
+  degree: string;
+  period: string;
+  location: string;
+}
+
+export interface AboutMeContent {
+  title: string;
+  subtitle: string;
+  description: string;
+  skills: string[];
+  favoriteTechnologies: string[];
+  experience: Experience[];
+  education: Education[];
+}
+
+export interface AboutMeResponse {
+  fr: AboutMeContent;
+  en: AboutMeContent;
+}

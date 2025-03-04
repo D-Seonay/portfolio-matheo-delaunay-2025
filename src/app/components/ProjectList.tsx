@@ -71,9 +71,8 @@ export default function ProjectList() {
             onMouseLeave={() => setHoveredIndex(null)}
           >
             <motion.div
-              className="flex items-left sm:items-center justify-between sm:flex-row flex-col md:p-6 p-2 border-b border-gray-700 rounded-lg bg-gray-800 cursor-pointer transition-all duration-100"
+              className="flex items-left sm:items-center justify-between sm:flex-row flex-col md:p-6 p-2 border-b border-gray-700 rounded-lg bg-gray-900/50 cursor-pointer transition-all duration-100"
               animate={{ 
-                backgroundColor: hoveredIndex === idx ? "rgba(17, 17, 17, 0.9)" : "rgba(31, 41, 55, 0.7)",
                 scale: hoveredIndex === idx ? 1.02 : 1
               }}
               whileHover={{ scale: 1.02 }}
@@ -112,7 +111,7 @@ export default function ProjectList() {
 
             {hoveredIndex === idx && (
               <motion.div
-                className="absolute inset-0 flex flex-row justify-around items-center p-6 bg-gray-800/95 text-center rounded-lg"
+                className="absolute inset-0 flex flex-row justify-around items-center p-6 bg-gray-900 text-center rounded-lg"
                 initial={{ opacity: 0, y: 20 }}
                 animate={{ opacity: 1, y: 0 }}
                 exit={{ opacity: 0, y: 20 }}
