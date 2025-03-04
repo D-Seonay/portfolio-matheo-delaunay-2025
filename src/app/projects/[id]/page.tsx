@@ -68,19 +68,20 @@ export default function ProjectDetail() {
 
   // Précharger l'image principale avec plusieurs techniques
   useEffect(() => {
-    if (project?.screenshots[0]) {
+    const mainScreenshot = project?.screenshots?.[0];
+    if (mainScreenshot) {
       // 1. Préchargement avec link preload
       const link = document.createElement('link');
       link.rel = 'preload';
       link.as = 'image';
-      link.href = project.screenshots[0];
+      link.href = mainScreenshot;
       link.type = 'image/webp';
       link.media = '(min-width: 768px)';
       link.crossOrigin = 'anonymous';
       document.head.appendChild(link);
 
       // 2. Préchargement avec fetch
-      fetch(project.screenshots[0], {
+      fetch(mainScreenshot, {
         method: 'GET',
         mode: 'cors',
         cache: 'force-cache',
@@ -91,10 +92,10 @@ export default function ProjectDetail() {
 
       // 3. Préchargement avec Image
       const img = new window.Image();
-      img.src = project.screenshots[0];
+      img.src = mainScreenshot;
       img.crossOrigin = 'anonymous';
     }
-  }, [project?.screenshots[0]]);
+  }, [project?.screenshots]);
 
   if (isLoading) {
     return (
@@ -136,7 +137,7 @@ export default function ProjectDetail() {
   };
 
   return (
-    <div className="p-8 mt-14 relative min-h-screen">
+    <div className="p-8 relative min-h-screen">
       {/* Background Image */}
       <Image
         src="/grid.svg"
@@ -167,7 +168,7 @@ export default function ProjectDetail() {
           className="space-y-8"
         >
           {/* En-tête du projet */}
-          <div className="flex justify-between items-start flex-col sm:flex-row">
+          <div className="flex justify-between items-start flex-col sm:flex-row mt-14">
             <div>
               <h1 className="text-4xl font-bold text-white mb-2">
                 {project.link ? (
@@ -214,7 +215,7 @@ export default function ProjectDetail() {
                 decoding="async"
                 fetchPriority="high"
                 crossOrigin="anonymous"
-                onLoad={(e) => {
+                onLoad={() => {
                   // Marquer l'image comme chargée pour le LCP
                   if (typeof window !== 'undefined') {
                     window.performance?.mark?.('lcp-image-loaded');

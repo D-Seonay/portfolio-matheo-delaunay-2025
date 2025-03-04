@@ -35,20 +35,23 @@ export default function SpotlightCard({
                 animate={{ scale: 1, opacity: 1 }}
                 transition={{ duration: 0.5, ease: "easeOut" }}
             >
-                {/* Spotlight Effect */}
+                {/* Background Spotlight Effect */}
                 <motion.div
                     className="absolute inset-0 rounded-lg pointer-events-none"
                     style={{
-                        background: `radial-gradient(circle at ${mousePosition.x + 160}px ${mousePosition.y + 96}px, rgba(255, 255, 255, 0.15), transparent 90%)`,
+                        background: `radial-gradient(circle at ${mousePosition.x + 160}px ${mousePosition.y + 96}px, rgba(255, 255, 255, 0.1), transparent 90%)`,
+                        mixBlendMode: 'overlay',
                     }}
                 />
 
-                {/* Content */}
-                <h2 className="text-lg font-semibold">{title}</h2>
-                <p className="text-gray-400 text-sm mt-1">{description}</p>
+                {/* Content Container with Glass Effect */}
+                <div className="relative z-0 h-full flex flex-col">
+                    <h2 className="text-lg font-semibold">{title}</h2>
+                    <p className="text-gray-400 text-sm mt-1">{description}</p>
 
-                {/* Contenu optionnel */}
-                {children && <div className="mt-3">{children}</div>}
+                    {/* Contenu optionnel */}
+                    {children && <div className="mt-3">{children}</div>}
+                </div>
 
                 {/* Subtle Glow Effect */}
                 <motion.div

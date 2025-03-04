@@ -38,7 +38,7 @@ const projects: Record<Lang, Project[]> = {
     { 
       id: "2", 
       name: "Food Collect (Fictif)",
-      description: "Réfonte du site de Food Collect",
+      description: "Réfonte du site de Food Collect pour le apprendre à utiliser TailwindCSS et Framer Motion",
       image: "/projects/2/food-collect-1.png",
       link: "https://food-collect-refactor.vercel.app/",
       status: "development",
@@ -97,19 +97,11 @@ const projects: Record<Lang, Project[]> = {
         "/projects/3/pokedex-item.png",
         "/projects/3/pokedex-login.png"
       ],
-      collaborators: [
-        {
-          id: "1",
-          name: "Mathéo DELAUNAY",
-          role: "Développeur Full Stack",
-          image: "/collaborators/matheo.jpg",
-          link: "https://github.com/D-Seonay"
-        }
-      ]
+      collaborators: []
     },
     { 
       id: "4",
-      name: "Portfolio",
+      name: "Portfolio 2024",
       description: "Portfolio personnel présentant mes projets et compétences",
       image: "/projects/4/portfolio-home.png", 
       link: "https://matheo-delaunay.tech",
@@ -118,7 +110,7 @@ const projects: Record<Lang, Project[]> = {
         url: "https://github.com/D-Seonay/portfolio",
         isPrivate: false
       },
-      tags: ["React", "Next.js", "TailwindCSS"],
+      tags: ["React", "Styled Components", "Framer Motion"],
       longDescription: "Portfolio personnel développé avec React.js, présentant mes compétences, projets et parcours professionnel. Inspiré du design de Katy_v4, ce site vitrine met en valeur mon travail de développeur de manière moderne et interactive.",
       features: [
         "Présentation des projets",
@@ -129,10 +121,8 @@ const projects: Record<Lang, Project[]> = {
       ],
       technologies: [
         "React",
-        "Next.js", 
-        "TailwindCSS",
+        "Styled Components",
         "Framer Motion",
-        "TypeScript"
       ],
       screenshots: [
         "/projects/4/portfolio-home.png",
@@ -140,13 +130,6 @@ const projects: Record<Lang, Project[]> = {
         "/projects/4/portfolio-about.png"
       ],
       collaborators: [
-        {
-          id: "1",
-          name: "Mathéo DELAUNAY",
-          role: "Développeur Full Stack",
-          image: "/collaborators/matheo.jpg",
-          link: "https://github.com/D-Seonay"
-        }
       ]
     },
   ],
@@ -187,7 +170,7 @@ const projects: Record<Lang, Project[]> = {
     { 
       id: "2", 
       name: "Food Collect (Fictitious)",
-      description: "Food Collect website redesign",
+      description: "Food Collect website redesign for learning TailwindCSS and Framer Motion",
       image: "/projects/2/food-collect-1.png",
       link: "https://food-collect-refactor.vercel.app/",
       status: "development",
@@ -248,18 +231,11 @@ const projects: Record<Lang, Project[]> = {
         "/projects/3/pokedex-login.png"
       ],
       collaborators: [
-        {
-          id: "1",
-          name: "Mathéo DELAUNAY",
-          role: "Full Stack Developer",
-          image: "/collaborators/matheo.jpg",
-          link: "https://github.com/D-Seonay"
-        }
       ]
     },
     { 
       id: "4",
-      name: "Portfolio",
+      name: "Portfolio 2024",
       description: "Personal portfolio showcasing my projects and skills",
       image: "/projects/4/portfolio-home.png",
       link: "https://matheo-delaunay.tech",
@@ -268,7 +244,7 @@ const projects: Record<Lang, Project[]> = {
         url: "https://github.com/D-Seonay/portfolio",
         isPrivate: false
       },
-      tags: ["React", "Next.js", "TailwindCSS"],
+      tags: ["React", "Styled Components", "Framer Motion"],
       longDescription: "Personal portfolio developed with React.js, showcasing my skills, projects and professional journey. Inspired by Katy_v4's design, this showcase site highlights my work as a developer in a modern and interactive way.",
       features: [
         "Project showcase",
@@ -279,10 +255,8 @@ const projects: Record<Lang, Project[]> = {
       ],
       technologies: [
         "React",
-        "Next.js", 
-        "TailwindCSS",
+        "Styled Components",
         "Framer Motion",
-        "TypeScript"
       ],
       screenshots: [
         "/projects/4/portfolio-home.png",
@@ -290,13 +264,6 @@ const projects: Record<Lang, Project[]> = {
         "/projects/4/portfolio-about.png"
       ],
       collaborators: [
-        {
-          id: "1",
-          name: "Mathéo DELAUNAY",
-          role: "Full Stack Developer",
-          image: "/collaborators/matheo.jpg",
-          link: "https://github.com/D-Seonay"
-        }
       ]
     }
   ],
