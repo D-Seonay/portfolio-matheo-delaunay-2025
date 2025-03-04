@@ -34,6 +34,9 @@ export default function SpotlightCard({
                 initial={{ scale: 0.9, opacity: 0 }}
                 animate={{ scale: 1, opacity: 1 }}
                 transition={{ duration: 0.5, ease: "easeOut" }}
+                role="button"
+                tabIndex={0}
+                type="button"
             >
                 {/* Background Spotlight Effect */}
                 <motion.div
