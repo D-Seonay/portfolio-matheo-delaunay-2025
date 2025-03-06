@@ -11,9 +11,9 @@ const ProfileSection = ({ description }: ProfileSectionProps) => {
       initial={{ opacity: 0, x: -20 }}
       animate={{ opacity: 1, x: 0 }}
       transition={{ duration: 0.5, delay: 0.2 }}
-      className="relative"
+      className="relative flex flex-col sm:flex-row items-center justify-center"
     >
-      <div className="relative h-[600px] w-full rounded-2xl overflow-hidden">
+      <div className="relative h-[400px] w-full rounded-2xl overflow-hidden">
         <Image
           src="/img/pp.svg"
           alt="Profile"

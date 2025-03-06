@@ -127,8 +127,8 @@ const SkillsSection = () => {
               >
                 <div className="flex items-center gap-3 mb-4">
                   <motion.div
-                    initial={{ rotate: 0 }}
-                    whileHover={{ rotate: 360, scale: 1.1 }}
+                    initial={{ scale: 1 }}
+                    whileHover={{ scale: 1.1 }}
                     transition={{ duration: 0.3 }}
                     className={`p-3 rounded-lg bg-gray-800/50 group-hover:bg-opacity-70 transition-all duration-300 ${color.replace('text-', 'bg-')}/10`}
                   >

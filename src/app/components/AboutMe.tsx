@@ -83,17 +83,21 @@ const AboutMe = () => {
           <p className="text-xl text-gray-400">{content.subtitle}</p>
         </motion.div>
 
-        <div className="grid grid-cols-1 lg:grid-cols-2 gap-12">
+        <div className="grid grid-cols-1">
           {/* Left Column - Profile */}
           <ProfileSection description={content.description} />
 
-          {/* Right Column - Skills */}
-        </div>
-        <SkillsSection />
 
+        </div>
 
         {/* Features Section */}
         <FeaturesSection />
+
+        {/* Skills Section */}
+        <SkillsSection />
+
+
+
 
         {/* Timeline Section */}
         <TimelineSection 
