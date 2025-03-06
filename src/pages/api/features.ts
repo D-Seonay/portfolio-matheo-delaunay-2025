@@ -1,5 +1,4 @@
 import { NextApiRequest, NextApiResponse } from 'next';
-import { IconType } from 'react-icons';
 import { Lang } from "@/types";
 
 export interface Feature {
