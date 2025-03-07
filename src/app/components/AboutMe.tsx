@@ -5,7 +5,6 @@ import { useLanguage } from "@/app/context/LanguageContext";
 import { AboutMeContent } from "@/types";
 import ProfileSection from "./ProfileSection";
 import SkillsSection from "./SkillsSection";
-import TimelineSection from "./TimelineSection";
 import FeaturesSection from "./FeaturesSection";
 
 const AboutMe = () => {

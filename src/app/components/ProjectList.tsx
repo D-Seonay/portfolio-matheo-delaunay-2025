@@ -6,7 +6,7 @@ import Image from "next/image";
 import Link from "next/link";
 import { Project, ApiResponse } from "@/types";
 import { useLanguage } from "../context/LanguageContext";
-import { FaCode, FaGithub } from "react-icons/fa";
+import { FaCode } from "react-icons/fa";
 
 export default function ProjectList() {
   const [hoveredIndex, setHoveredIndex] = useState<number | null>(null);
