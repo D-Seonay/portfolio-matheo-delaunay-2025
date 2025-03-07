@@ -6,6 +6,7 @@ import Image from "next/image";
 import Link from "next/link";
 import { Project, ApiResponse } from "@/types";
 import { useLanguage } from "../context/LanguageContext";
+import { FaCode, FaGithub } from "react-icons/fa";
 
 export default function ProjectList() {
   const [hoveredIndex, setHoveredIndex] = useState<number | null>(null);
@@ -61,75 +62,96 @@ export default function ProjectList() {
   }
 
   return (
-    <div className="w-full max-w-3xl mx-auto p-4">
-      <h2 className="text-3xl font-bold text-gray-300 mb-6">Project List</h2>
-      {projects.map((project, idx) => (
-        <Link href={`/projects/${project.id}`} key={project.id}>
-          <div
-            className="relative w-full overflow-hidden mb-4"
-            onMouseEnter={() => setHoveredIndex(idx)}
-            onMouseLeave={() => setHoveredIndex(null)}
+    <section className="min-h-screen flex items-center py-20">
+      <div className="w-full space-y-8">
+        <motion.div
+            initial={{ opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            className="relative mb-16 text-center"
           >
-            <motion.div
-              className="flex items-left sm:items-center justify-between sm:flex-row flex-col md:p-6 p-2 border-b border-gray-700 rounded-lg bg-gray-900/50 cursor-pointer transition-all duration-100"
-              animate={{ 
-                scale: hoveredIndex === idx ? 1.02 : 1
-              }}
-              whileHover={{ scale: 1.02 }}
-              transition={{ duration: 0.2 }}
-            >
-              <div className="flex flex-col items-start">
-                <span className={`text-xl font-semibold transition-all ${
-                  hoveredIndex === idx ? "text-yellow-500" : "text-white"
-                }`}>
-                  {project.name}
-                </span>
-                <span className="text-sm font-normal sm:text-base text-gray-400">{project.description}</span>
-              </div>
-              <div className="flex items-center gap-4">
-                <div className="flex gap-2">
-                  {project.tags.map((tag, tagIdx) => (
-                    <span 
-                      key={tagIdx}
-                      className="px-2 py-1 text-xs bg-gray-700 text-gray-300 rounded"
-                    >
-                      {tag}
-                    </span>
-                  ))}
-                </div>
-                <motion.span
-                  className="text-2xl transition-all text-yellow-500"
-                  animate={{ 
-                    x: hoveredIndex === idx ? 10 : 0,
-                    rotate: hoveredIndex === idx ? 45 : 0
-                  }}
+            <h3 className="text-4xl font-bold text-transparent bg-clip-text bg-gradient-to-r from-yellow-400 to-yellow-600 mb-4">
+              {language === 'fr' ? 'Mes Projets' : 'My Projects'}
+            </h3>
+  
+            <p className="text-xl text-gray-400 text-center max-w-3xl mx-auto">
+              {language === 'fr'
+                ? "Découvrez mes réalisations et projets personnels, du développement web au mobile."
+                : "Explore my achievements and personal projects, from web to mobile development."}
+            </p>
+          </motion.div>
+            
+          <motion.div
+            initial={{ opacity: 0 }}
+            whileInView={{ opacity: 1 }}
+            viewport={{ once: true }}
+            transition={{ staggerChildren: 0.1 }}
+            className="grid gap-6 max-w-6xl mx-auto px-4"
+          >
+            {projects.map((project, idx) => (
+              <Link href={`/projects/${project.id}`} key={project.id}>
+                <motion.div
+                  className="group relative w-full"
+                  initial={{ opacity: 0, y: 20 }}
+                  whileInView={{ opacity: 1, y: 0 }}
+                  viewport={{ once: true }}
+                  whileHover={{ scale: 1.02 }}
+                  transition={{ duration: 0.3 }}
+                  onMouseEnter={() => setHoveredIndex(idx)}
+                  onMouseLeave={() => setHoveredIndex(null)}
                 >
-                  →
-                </motion.span>
-              </div>
-            </motion.div>
-
-            {hoveredIndex === idx && (
-              <motion.div
-                className="absolute inset-0 flex flex-row justify-around items-center p-6 bg-gray-900 text-center rounded-lg"
-                initial={{ opacity: 0, y: 20 }}
-                animate={{ opacity: 1, y: 0 }}
-                exit={{ opacity: 0, y: 20 }}
-                transition={{ duration: 0.2 }}
-              >
-                <span className="text-xl font-semibold text-yellow-500">Project #{project.id}</span>
-                <Image
-                  src={project.image}
-                  alt={`${project.name} preview`}
-                  width={100}
-                  height={100}
-                  className="rounded-lg shadow-lg hover:scale-110 transition-transform duration-200"
-                />
-              </motion.div>
-            )}
-          </div>
-        </Link>
-      ))}
-    </div>
+                  <div className="flex items-center justify-between p-6 bg-[#0a0a0a]/80 backdrop-blur-sm rounded-xl border border-gray-800/50 hover:border-gray-700/50 hover:shadow-lg hover:shadow-blue-500/10">
+                    <div className="flex items-start space-x-4">
+                      <motion.div
+                        whileHover={{ scale: 1.1, rotate: 360 }}
+                        transition={{ duration: 0.3 }}
+                        className="flex-shrink-0 p-3 bg-gray-800/50 rounded-lg group-hover:bg-opacity-70 transition-all duration-300 bg-blue-500/10"
+                      >
+                        <FaCode className="w-6 h-6 text-blue-500" />
+                      </motion.div>
+                      <div>
+                        <h3 className="text-xl font-semibold text-white group-hover:text-blue-400 transition-colors duration-300">
+                          {project.name}
+                        </h3>
+                        <p className="text-gray-400 text-sm mt-1">
+                          {project.description}
+                        </p>
+                        <div className="flex flex-wrap gap-2 mt-3">
+                          {project.tags.map((tag, tagIdx) => (
+                            <span
+                              key={tagIdx}
+                              className="px-2 py-1 text-xs bg-blue-500/10 text-blue-400 rounded-full border border-blue-500/20"
+                            >
+                              {tag}
+                            </span>
+                          ))}
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+  
+                  {hoveredIndex === idx && (
+                    <motion.div
+                      className="absolute inset-0 flex items-center justify-center bg-[#0a0a0a]/90 backdrop-blur-sm rounded-xl"
+                      initial={{ opacity: 0 }}
+                      animate={{ opacity: 1 }}
+                      exit={{ opacity: 0 }}
+                      transition={{ duration: 0.2 }}
+                    >
+                      <Image
+                        src={project.image}
+                        alt={`${project.name} preview`}
+                        width={200}
+                        height={150}
+                        className="rounded-lg shadow-lg object-cover"
+                      />
+                    </motion.div>
+                  )}
+                </motion.div>
+              </Link>
+            ))}
+          </motion.div>
+        </div>
+      </section>
   );
 }

@@ -100,13 +100,14 @@ const AboutMe = () => {
 
 
         {/* Timeline Section */}
+        {/*
         <TimelineSection 
           education={content.education}
           experience={content.experience}
         />
+        */}
       </div>
-    </section>
-  );
+    </section>  );
 };
 
 export default AboutMe;

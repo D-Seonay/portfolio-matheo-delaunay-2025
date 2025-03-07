@@ -69,16 +69,9 @@ const FeaturesSection = () => {
         viewport={{ once: true }}
         className="relative mb-16"
       >
-        <h2 className="text-4xl font-bold text-transparent bg-clip-text mb-8 text-center relative">
-          <span className="absolute inset-0 flex items-center justify-center">
-            <span className="text-4xl font-bold border-2 border-white/80 px-8 py-2 rounded-lg">
-              {language === 'fr' ? 'Mes compétences' : 'My Skills'}
-            </span>
-          </span>
-          <span className="opacity-0">
+        <h3 className="text-4xl font-bold text-transparent bg-clip-text text-center relative bg-gradient-to-r from-yellow-400 to-yellow-600 mb-4">
             {language === 'fr' ? 'Mes compétences' : 'My Skills'}
-          </span>
-        </h2>
+        </h3>
       </motion.div>
 
       <motion.div

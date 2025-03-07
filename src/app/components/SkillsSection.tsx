@@ -4,18 +4,22 @@ import { IconType } from "react-icons";
 import { FaReact, FaNodeJs, FaDatabase, FaCloud, FaTools, FaMobile } from 'react-icons/fa';
 import { PiBrainBold } from "react-icons/pi";
 import type { SkillGroup } from "@/pages/api/skills";
+import { useLanguage } from "../context/LanguageContext";
 
 // Map des icônes et leurs couleurs pour chaque catégorie
 const categoryConfig: { [key: string]: { icon: IconType; color: string } } = {
   Frontend: { icon: FaReact, color: "text-cyan-500" },
   Backend: { icon: FaNodeJs, color: "text-green-500" },
   "Base de données": { icon: FaDatabase, color: "text-purple-500" },
+  Database: { icon: FaDatabase, color: "text-purple-500" },
   DevOps: { icon: FaCloud, color: "text-blue-500" },
   Mobile: { icon: FaMobile, color: "text-red-500" },
   Outils: { icon: FaTools, color: "text-yellow-500" },
+  Tools: { icon: FaTools, color: "text-yellow-500" },
 };
 
 const SkillsSection = () => {
+  const { language } = useLanguage();
   const [skillGroups, setSkillGroups] = useState<SkillGroup[]>([]);
   const [isLoading, setIsLoading] = useState(true);
   const [error, setError] = useState<string | null>(null);
@@ -48,7 +52,7 @@ const SkillsSection = () => {
     const fetchSkills = async () => {
       try {
         setIsLoading(true);
-        const response = await fetch('/api/skills');
+        const response = await fetch(`/api/skills?lang=${language}`);
         if (!response.ok) {
           throw new Error('Failed to fetch skills');
         }
@@ -62,7 +66,7 @@ const SkillsSection = () => {
     };
 
     fetchSkills();
-  }, []);
+  }, [language]);
 
   if (isLoading) {
     return (
@@ -98,11 +102,13 @@ const SkillsSection = () => {
           viewport={{ once: true }}
           className="text-center mb-8"
         >
-          <h3 className="text-4xl font-bold text-transparent bg-clip-text bg-gradient-to-r from-blue-500 to-cyan-500 mb-4">
-            Technologies
+          <h3 className="text-4xl font-bold text-transparent bg-clip-text bg-gradient-to-r from-yellow-400 to-yellow-600 mb-4">
+            {language === 'fr' ? 'Technologies' : 'Technologies'}
           </h3>
           <p className="text-xl text-gray-400">
-            Un aperçu des technologies que je maîtrise pour créer des applications web modernes et performantes.
+            {language === 'fr' 
+              ? "Un aperçu des technologies que je maîtrise pour créer des applications web modernes et performantes."
+              : "An overview of the technologies I master to create modern and high-performance web applications."}
           </p>
         </motion.div>
 
@@ -128,7 +134,7 @@ const SkillsSection = () => {
                 <div className="flex items-center gap-3 mb-4">
                   <motion.div
                     initial={{ scale: 1 }}
-                    whileHover={{ scale: 1.1 }}
+                    whileHover={{ scale: 1.1}}
                     transition={{ duration: 0.3 }}
                     className={`p-3 rounded-lg bg-gray-800/50 group-hover:bg-opacity-70 transition-all duration-300 ${color.replace('text-', 'bg-')}/10`}
                   >
@@ -166,13 +172,13 @@ const SkillsSection = () => {
         >
           <div className="flex items-center justify-center gap-3 text-lg">
             <motion.div
-              animate={{ rotate: 360 }}
-              transition={{ duration: 20, repeat: Infinity, ease: "linear" }}
             >
               <PiBrainBold className="w-6 h-6 text-blue-400" />
             </motion.div>
             <span className="text-transparent bg-clip-text bg-gradient-to-r from-blue-400 to-cyan-400">
-              Toujours en veille technologique et en apprentissage continu
+              {language === 'fr'
+                ? "Toujours en veille technologique et en apprentissage continu"
+                : "Always on technology watch and continuous learning"}
             </span>
           </div>
         </motion.div>
