@@ -129,8 +129,37 @@ const projects: Record<Lang, Project[]> = {
       collaborators: [
       ]
     },
+    {
+      id: "5",
+      name: "Portfolio Fake",
+      description: "Portfolio pour une personne en communication",
+      image: "/projects/5/portfolio-home.png",
+      link: "https://portfolio-adele-eta.vercel.app/",
+      status: "production",
+      repository: {
+        url: "https://github.com/D-Seonay/portfolio-adele",
+        isPrivate: false
+      },
+      tags: ["React", "Framer Motion"],
+      longDescription: "Portfolio pour une personne en communication, développé avec React.js, présentant ses compétences, projets et parcours professionnel.",
+      features: [
+        "Présentation des projets",
+        "Section compétences",
+        "Parcours professionnel",
+        "Responsive design",
+      ],
+      technologies: [
+        "React",
+        "Framer Motion",
+      ],
+      screenshots: [
+        "/projects/5/portfolio-home.png",
+        "/projects/5/portfolio-projects.png",
+        "/projects/5/portfolio-about.png"
+      ],
+      collaborators: []
+    }
   ],
-
   en: [
     { 
       id: "1", 
@@ -259,6 +288,36 @@ const projects: Record<Lang, Project[]> = {
       ],
       collaborators: [
       ]
+    },
+    {
+      id: "5",
+      name: "Portfolio Fake",
+      description: "Portfolio for a communication professional",
+      image: "/projects/5/portfolio-home.png",
+      link: "https://portfolio-adele-eta.vercel.app/",
+      status: "production",
+      repository: {
+        url: "https://github.com/D-Seonay/portfolio-adele",
+        isPrivate: false
+      },
+      tags:  ["React", "Framer Motion"],
+      longDescription: "Portfolio for a communication professional, developed with React.js, showcasing their skills, projects and professional journey.",
+      features: [
+        "Project showcase",
+        "Skills section",
+        "Professional journey",
+        "Responsive design",
+      ],
+      technologies: [
+        "React",
+        "Framer Motion",
+      ],
+      screenshots: [
+        "/projects/5/portfolio-home.png",
+        "/projects/5/portfolio-projects.png",
+        "/projects/5/portfolio-about.png"
+      ],
+      collaborators: []
     }
   ],
 };

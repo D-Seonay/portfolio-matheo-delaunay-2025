@@ -6,6 +6,7 @@ import Footer from "./components/Footer";
 import ScrollToTopButton from "./components/ScrollToTopButton";
 import Projects from "@/app/components/ProjectList";
 import AboutMe from "./components/AboutMe";
+import ContactForm from "./components/ContactForm";
 
 
 export default function Home() {
@@ -17,6 +18,7 @@ export default function Home() {
       <AboutMe />
       <Projects />
       <FAQ />
+      <ContactForm />
       <Footer />
       <ScrollToTopButton />
     </div>

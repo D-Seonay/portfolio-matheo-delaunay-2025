@@ -45,19 +45,19 @@ export default function FAQ() {
           initial="hidden"
           whileInView="visible"
           viewport={{ once: true }}
-          className="grid grid-cols-1 md:grid-cols-1 gap-6 max-w-6xl mx-auto px-4"
+          className="grid grid-cols-1 gap-6 max-w-6xl mx-auto px-4"
         >
           {faqs.map((faq, index) => (
             <motion.div
               key={index}
               onClick={() => toggleFAQ(index)}
-              className="group bg-[#0a0a0a]/80 backdrop-blur-sm rounded-xl p-6 hover:bg-gray-800/40 transition-all border border-gray-800/50 hover:border-gray-700/50 hover:shadow-lg hover:shadow-blue-500/10 cursor-pointer"
+              className="group bg-[#0a0a0a]/80 backdrop-blur-sm rounded-xl p-6 hover:bg-gray-800/40 transition-all border border-gray-800/50 hover:border-gray-700/50 hover:shadow-lg hover:shadow-blue-500/10 cursor-pointer w-full"
             >
               <div className="flex items-start space-x-4">
                 <motion.div
                   whileHover={{ scale: 1.1, rotate: 360 }}
                   transition={{ duration: 0.3 }}
-                  className="flex-shrink-0 p-3 bg-gray-800/50 rounded-lg group-hover:bg-opacity-70 transition-all duration-300 bg-blue-500/10"
+                  className="flex-shrink-0 p-3 rounded-lg group-hover:bg-opacity-70 transition-all duration-300 bg-blue-500/10"
                 >
                   <FaQuestionCircle className="w-6 h-6 text-blue-500" />
                 </motion.div>
