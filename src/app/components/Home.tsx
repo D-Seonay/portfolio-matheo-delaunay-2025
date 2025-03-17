@@ -27,7 +27,7 @@ export default function Home() {
   }, [language]);
 
   return (
-    <div className="relative h-[93vh] w-screen flex flex-col">
+    <div className="relative h-[93vh] w-screen flex flex-col" id="home">
       {/* Background Image */}
       <Image
         src="/grid.svg"

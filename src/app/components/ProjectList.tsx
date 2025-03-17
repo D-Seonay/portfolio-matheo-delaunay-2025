@@ -62,7 +62,7 @@ export default function ProjectList() {
   }
 
   return (
-    <section className="min-h-screen flex items-center py-20">
+    <section className="min-h-screen flex items-center py-20" id="projects">
       <div className="w-full space-y-8">
         <motion.div
             initial={{ opacity: 0, y: 20 }}
