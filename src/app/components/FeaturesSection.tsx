@@ -1,7 +1,7 @@
 import { useEffect, useState } from "react";
 import { motion } from "framer-motion";
 import { FaCode, FaBrain, FaRocket, FaCoffee, FaLightbulb, FaUsers } from 'react-icons/fa';
-import type { Feature } from "@/pages/api/features";
+import type { Feature } from "@/service/api/features";
 import { useLanguage } from "../context/LanguageContext";
 
 // Map des icônes pour chaque catégorie
