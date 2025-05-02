@@ -4,10 +4,41 @@ import { Project, ApiResponse, Lang } from "@/types";
 const projects: Record<Lang, Project[]> = {
   fr: [
     { 
-      id: "1", 
+      id: "6", 
+      name: "Canyon Coffee Shop", 
+      description: "Site vitrine pour un coffee shop fictif", 
+      image: "/projects/canyon-coffee/canyon-coffee-1.png",
+      link: "https://canyon-pastel-bloom.vercel.app/", 
+      status: "production",
+      repository: {
+        url: "https://github.com/D-Seonay/canyon-coffee-shop",
+        isPrivate: true
+      },
+      tags: ["React", "Vite", "Tailwind"],
+      longDescription: "Un site vitrine pour le coffee shop Canyon Nantes",
+      features: [
+        "Animations fluides",
+        "Design moderne et épuré",
+        "Responsive design",
+      ],
+      technologies: [
+        "React", "Vite", "Tailwind", "Framer motion"
+      ],
+      screenshots: [
+        "/projects/canyon-coffee/canyon-coffee-1.png", 
+        "/projects/canyon-coffee/canyon-coffee-2.png", 
+        "/projects/canyon-coffee/canyon-coffee-3.png", 
+        "/projects/canyon-coffee/canyon-coffee-4.png", 
+        "/projects/canyon-coffee/canyon-coffee-5.png",
+      ],
+      collaborators: []
+    },
+
+    { 
+      id: "5", 
       name: "App Restaurant", 
       description: "Application web pour la gestion de restaurants", 
-      image: "/projects/1/app-restaurant-1.png", 
+      image: "/projects/app-restaurant/app-restaurant-1.png", 
       link: "#", 
       status: "development",
       repository: {
@@ -29,15 +60,15 @@ const projects: Record<Lang, Project[]> = {
         "PostgreSQL"
       ],
       screenshots: [
-        "/projects/1/app-restaurant-1.png",
+        "/projects/app-restaurant/app-restaurant-1.png",
       ],
       collaborators: []
     },
     { 
-      id: "2", 
+      id: "4", 
       name: "Food Collect (Fictif)",
       description: "Réfonte du site de Food Collect pour le apprendre à utiliser TailwindCSS et Framer Motion",
-      image: "/projects/2/food-collect-1.png",
+      image: "/projects/food-collect/food-collect-1.png",
       link: "https://food-collect-refactor.vercel.app/",
       status: "development",
       repository: {
@@ -57,9 +88,9 @@ const projects: Record<Lang, Project[]> = {
         "Framer Motion"
       ],  
       screenshots: [
-        "/projects/2/food-collect-1.png",
-        "/projects/2/food-collect-2.png",
-        "/projects/2/food-collect-3.png"
+        "/projects/food-collect/food-collect-1.png",
+        "/projects/food-collect/food-collect-2.png",
+        "/projects/food-collect/food-collect-3.png"
       ],
       collaborators: []
     },
@@ -67,7 +98,7 @@ const projects: Record<Lang, Project[]> = {
       id: "3",
       name: "Pokédex React-Django",
       description: "Application web de gestion de Pokémon",
-      image: "/projects/3/pokedex-home.png",
+      image: "/projects/pokedex/pokedex-home.png",
       link: "",
       status: "development", 
       repository: {
@@ -90,18 +121,18 @@ const projects: Record<Lang, Project[]> = {
         "PokeAPI"
       ],
       screenshots: [
-        "/projects/3/pokedex-home.png",
-        "/projects/3/pokedex-detail.png",
-        "/projects/3/pokedex-item.png",
-        "/projects/3/pokedex-login.png"
+        "/projects/pokedex/pokedex-home.png",
+        "/projects/pokedex/pokedex-detail.png",
+        "/projects/pokedex/pokedex-item.png",
+        "/projects/pokedex/pokedex-login.png"
       ],
       collaborators: []
     },
     { 
-      id: "4",
+      id: "2",
       name: "Portfolio 2024",
       description: "Portfolio personnel présentant mes projets et compétences",
-      image: "/projects/4/portfolio-home.png", 
+      image: "/projects/portfolio-2024/portfolio-home.png", 
       link: "https://matheo-delaunay.tech",
       status: "production",
       repository: {
@@ -122,18 +153,18 @@ const projects: Record<Lang, Project[]> = {
         "Framer Motion",
       ],
       screenshots: [
-        "/projects/4/portfolio-home.png",
-        "/projects/4/portfolio-projects.png",
-        "/projects/4/portfolio-about.png"
+        "/projects/portfolio-2024/portfolio-home.png",
+        "/projects/portfolio-2024/portfolio-projects.png",
+        "/projects/portfolio-2024/portfolio-about.png"
       ],
       collaborators: [
       ]
     },
     {
-      id: "5",
+      id: "1",
       name: "Portfolio Fake",
       description: "Portfolio pour une personne en communication",
-      image: "/projects/5/portfolio-home.png",
+      image: "/projects/portfolio-adele/portfolio-home.png",
       link: "https://portfolio-adele-eta.vercel.app/",
       status: "production",
       repository: {
@@ -153,9 +184,9 @@ const projects: Record<Lang, Project[]> = {
         "Framer Motion",
       ],
       screenshots: [
-        "/projects/5/portfolio-home.png",
-        "/projects/5/portfolio-projects.png",
-        "/projects/5/portfolio-about.png"
+        "/projects/portfolio-adele/portfolio-home.png",
+        "/projects/portfolio-adele/portfolio-projects.png",
+        "/projects/portfolio-adele/portfolio-about.png"
       ],
       collaborators: []
     }
