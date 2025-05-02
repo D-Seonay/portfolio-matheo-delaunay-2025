@@ -1,6 +1,5 @@
 import type { NextApiRequest, NextApiResponse } from "next";
-import { Status, ApiResponse, Lang } from "../../types";
-
+import { Status, ApiResponse, Lang } from "@/types"
 const statuses: Record<Lang, Status[]> = {
   fr: [
     { id: "1", status: "En ligne", text: "Ouvert à la discussion.", label: "En ligne" },

@@ -1,5 +1,5 @@
 import type { NextApiRequest, NextApiResponse } from "next";
-import { FooterDataType, ApiResponse, Lang } from "../../types";
+import { FooterDataType, ApiResponse, Lang } from "@/types";
 
 const footerData: Record<Lang, FooterDataType> = {
     fr: {

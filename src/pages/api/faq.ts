@@ -1,5 +1,5 @@
 import type { NextApiRequest, NextApiResponse } from "next";
-import { FAQType, ApiResponse, Lang } from "../../types";
+import { FAQType, ApiResponse, Lang } from "@/types";
 
 const faqs: Record<Lang, FAQType[]> = {
 

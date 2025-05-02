@@ -3,7 +3,7 @@ import { motion } from "framer-motion";
 import { IconType } from "react-icons";
 import { FaReact, FaNodeJs, FaDatabase, FaCloud, FaTools, FaMobile } from 'react-icons/fa';
 import { PiBrainBold } from "react-icons/pi";
-import type { SkillGroup } from "@/service/api/skills";
+import type { SkillGroup } from "@/pages/api/skills";
 import { useLanguage } from "../context/LanguageContext";
 
 // Map des icônes et leurs couleurs pour chaque catégorie

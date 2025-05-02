@@ -1,5 +1,5 @@
 import type { NextApiRequest, NextApiResponse } from "next";
-import { Project, ApiResponse, Lang } from "../../types";
+import { Project, ApiResponse, Lang } from "@/types";
 
 const projects: Record<Lang, Project[]> = {
   fr: [

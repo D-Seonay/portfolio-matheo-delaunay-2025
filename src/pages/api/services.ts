@@ -1,5 +1,5 @@
 import type { NextApiRequest, NextApiResponse } from "next";
-import { ServiceType, ApiResponse, Lang } from "../../types";
+import { ServiceType, ApiResponse, Lang } from "@/types";
 
 const services: Record<Lang, ServiceType[]> = {
     fr: [
